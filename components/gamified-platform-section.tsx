@@ -59,7 +59,7 @@ export function GamifiedPlatformSection() {
                   <div className="flex items-center gap-4 mb-6 p-4 bg-secondary rounded-xl">
                     <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                       <span className="text-primary-foreground font-bold">
-                        A
+                        M
                       </span>
                     </div>
                     <div>
