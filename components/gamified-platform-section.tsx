@@ -23,12 +23,11 @@ export function GamifiedPlatformSection() {
               Har bir o'quvchining shaxsiy o'quv platformasi
             </h2>
             <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 leading-relaxed">
-              Bu platformada o'quvchilarimiz darslarimizni qiziqarli o'yinlar
-              orqali o'rganishadi. Har bir bosqichda o'quvchilarimizga
-              vazifalarni qay darajada bajarganligiga qarab coin yani tangachalr
-              beriladi. Bular orqali ular turli xil narsalar sotib olishlari
-              mumkin. Ota onalar ham o'z farzandlarini o'zlashtirish jarayonini
-              kuzatib borishlari mumkin
+              Bizning o‘quv platformamizda har bir bajarilgan vazifa coinlar
+              bilan baholanadi. Ushbu coinlar orqali o‘zingning qahramoningni
+              turli xil skinlar bilan bezat! O‘yin va ta’lim uyg‘unlashgan bu
+              platforma bolalarni o‘rganishga qiziqtiradi va har bir yutuqni
+              haqiqiy mukofotga aylantiradi.
             </p>
             <div className="grid grid-cols-2 gap-4">
               {features.map((feature) => (

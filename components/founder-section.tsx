@@ -27,22 +27,23 @@ export function FounderSection() {
               <div className="p-8 md:p-10 flex flex-col justify-center">
                 <Quote className="w-10 h-10 text-accent mb-6" />
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                  &quot;I founded NAVI IT School with a simple belief: every
-                  child deserves access to quality tech education. In
-                  today&apos;s digital world, coding is the new literacy, and
-                  we&apos;re here to make sure no young mind is left
-                  behind.&quot;
+                  Assalomu alaykum! Mening orzuim — bolalar va yoshlar uchun
+                  faqat o‘qish emas, balki yaratishni o‘rgatadigan platformani
+                  yaratish. NAVI orqali biz kelajak mutaxassislarini
+                  tarbiyalaymiz, ular o‘z g‘oyalarini amalga oshiradi va dunyoga
+                  o‘z hissasini qo‘shadi. Biz bilan birga bolalar nafaqat bilim
+                  oladi, balki o‘z salohiyatini ochadi va yangi imkoniyatlarni
+                  kashf etadi.”
                 </p>
                 <div>
                   <h3 className="text-xl font-bold text-card-foreground mb-1">
                     Atham Azam
                   </h3>
                   <p className="text-accent font-medium mb-3">Founder & CEO</p>
-                  <p className="text-sm text-muted-foreground">
-                    Former Google engineer with 15+ years in tech. Passionate
-                    about democratizing education and empowering the next
-                    generation of creators.
-                  </p>
+                  <ul className="text-sm text-muted-foreground list-disc ml-3.5">
+                    <li>MARS IT Asoschisi</li>
+                    <li>Get Coffee Asoschisi</li>
+                  </ul>
                 </div>
               </div>
             </div>

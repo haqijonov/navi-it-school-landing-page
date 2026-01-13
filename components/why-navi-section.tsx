@@ -24,14 +24,14 @@ const values = [
     icon: Shield,
     title: "Raqamli Madaniyat",
     description:
-      "O'quvchilarimiz texnalogiyadan qanday foydalanish kerak ekanligini amaliy holatda o'rganishadi",
+      "O'quvchilarimiz texnalogiyadan qanday foydalanish kerak ekanligini amaliy holatda o'rganishadi.",
     color: "bg-chart-2",
   },
   {
     icon: Rocket,
     title: "Kelajakka tayyor ko'nikmalar",
     description:
-      "Eng so'ngi texnalogiyalarni ishlatishni o'rganishadi. Suniy intelektni to'g'ri yo'lda foydalanish ko'nikmalarini hosil qilishdi",
+      "Eng so'ngi texnalogiyalarni ishlatishni o'rganishadi. Suniy intelektni to'g'ri yo'lda foydalanish ko'nikmalarini hosil qilishadi.",
     color: "bg-chart-3",
   },
 ];
@@ -55,7 +55,7 @@ export function WhyNaviSection() {
             Nega NAVI?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl ">
-            Nega ota-onalar aynan NAVI ni tanlashadi.
+            Nega ota-onalar aynan NAVI ni tanlashadi ?
           </p>
         </div>
 

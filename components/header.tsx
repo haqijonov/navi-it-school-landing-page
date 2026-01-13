@@ -12,17 +12,14 @@ export function Header() {
     { href: "#platform", label: "Platforma" },
     { href: "#why-navi", label: "Nega NAVI" },
     { href: "#teachers", label: "Ustozlarimiz" },
-    // { href: "#contact-1", label: "Bog'lanish" },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2">
-          {/* <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">N</span>
-          </div> */}
-          <span className="text-xl font-bold text-foreground">NAVI </span>
+        {/* Logo */}
+        <a href="#" className="text-xl font-bold text-foreground">
+          NAVI
         </a>
 
         {/* Desktop Navigation */}
@@ -38,9 +35,10 @@ export function Header() {
           ))}
         </nav>
 
+        {/* Desktop Button */}
         <a href="#contact-1" className="hidden md:block">
           <Button className="bg-primary text-primary-foreground hover:bg-accent">
-            Bizbilan bog'laning
+            Biz bilan bog‘laning
           </Button>
         </a>
 
@@ -54,28 +52,42 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Menu + Overlay */}
       {isMenuOpen && (
-        <div className="md:hidden bg-background border-b border-border">
-          <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
-            {navLinks.map((link) => (
+        <>
+          {/* Overlay */}
+          <div
+            className="fixed inset-0 z-40 min-h-screen lg:hidden bg-black/30"
+            onClick={() => setIsMenuOpen(false)}
+          />
+
+          {/* Mobile Navigation */}
+          <div className="fixed top-18 left-0 right-0 z-50 md:hidden bg-background border-b border-border">
+            <nav
+              className="container mx-auto px-4 py-4 flex flex-col gap-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-muted-foreground hover:text-foreground transition-colors font-medium py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+
               <a
-                key={link.href}
-                href={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors font-medium py-2"
+                href="#contact-1"
+                className="bg-primary text-primary-foreground hover:bg-accent text-center py-2 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
-                {link.label}
+                Bizga qo‘shiling
               </a>
-            ))}
-            <a
-              href={"#contact-1"}
-              className="bg-primary text-primary-foreground hover:bg-accent w-full"
-            >
-              Bizga qo'shiling
-            </a>
-          </nav>
-        </div>
+            </nav>
+          </div>
+        </>
       )}
     </header>
   );

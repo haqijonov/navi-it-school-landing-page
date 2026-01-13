@@ -9,13 +9,13 @@ const teachers = [
   {
     name: "Mavlon Haqijonov",
     role: "Senior Web Developer",
-    experience: "O'qitishda 3+ yillik tajribaga ega.",
+    experience: "O'qitishda 3+ yillik tajribaga ega",
     image: "/female-web-developer-teacher-portrait-professionall.jpg",
   },
   {
     name: "Islom Shahobiddinov",
     role: "AI Mutaxasis",
-    experience: "Dasturlash va AI da 3+ tajribaga ega.",
+    experience: "Dasturlash va AI da 3+ tajribaga ega",
     image: "/male-ai-specialist-teacher-portrait-professisonal.jpg",
   },
   {
@@ -45,8 +45,8 @@ export function TeachersSection() {
             Ustozlarimiz bilan tanishing
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl ">
-            Farzandlarimizni kelajakka tayorlashda va eng zamonavi
-            texnalogilarni o'rgatishda mutaxasislarimiz.
+            Farzandlarimizni kelajakka tayorlashda va eng zamonaviy
+            texnalogiyalarni o'rgatishda mutaxasislarimiz
           </p>
         </div>
 

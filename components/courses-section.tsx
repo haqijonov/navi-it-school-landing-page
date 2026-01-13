@@ -12,12 +12,13 @@ const courses = [
     icon: Code,
     title: "HTML",
     description: "HTML tuzlishi va veb sahifalar poydevorini yarating",
+    backgroundColor: "",
   },
   {
     icon: Palette,
     title: "CSS",
     description:
-      "Flexbox va Grid kabi zamonaviy CSS texnikasi bilan chiroyli, veb-saytlarni yarating.",
+      "Flexbox va Grid kabi zamonaviy CSS texnikasi bilan chiroyli veb-saytlarni yarating",
   },
   {
     icon: FileCode,
@@ -33,7 +34,7 @@ const courses = [
     icon: Sparkles,
     title: "AI Skills",
     description:
-      "rivojlanib borayotgan va barcha bilishi kerak bo’lgan ChatGPT, MidJourney va boshqa sun’iy intellektlar bilan ishlash",
+      "Rivojlanib borayotgan va barcha bilishi kerak bo’lgan ChatGPT, MidJourney va boshqa sun’iy intellektlar bilan ishlang",
   },
 ];
 
