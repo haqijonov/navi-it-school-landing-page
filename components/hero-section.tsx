@@ -26,11 +26,11 @@ export function HeroSection() {
           NAVI
         </h1>
         <p className="text-xl md:text-2xl lg:text-3xl text-primary-foreground/90 mb-8 font-medium text-pretty max-w-3xl mx-auto">
-          Biz faqat foydalalnuvchilarni emas, yangi loyhalar yaratuvchi yosh
+          Biz faqat foydalanuvchilarni emas, yangi loyihalar yaratuvchi yosh
           avlodni tarbiyalaymiz
         </p>
         <p className="text-lg md:text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
-          10-17 yoshdagi bolalarni qiziqarli talim orqali kelajakka tayorlash
+          10-17 yoshdagi bolalarni qiziqarli talim orqali kelajakka tayyorlash
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a href="#contact-1">

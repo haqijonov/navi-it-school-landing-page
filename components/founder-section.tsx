@@ -11,15 +11,15 @@ export function FounderSection() {
           </h2>
         </div>
 
-        <Card className="max-w-4xl mx-auto bg-card border-border overflow-hidden">
+        <Card className="max-w-4xl mx-auto bg-card p-0 border-border overflow-hidden">
           <CardContent className="p-0">
             <div className="grid md:grid-cols-2">
               {/* Photo */}
-              <div className="relative aspect-square md:aspect-auto">
+              <div className="relative aspect-square md:aspect-auto rounded-br-[150px] rounded-tr-[150px] overflow-hidden">
                 <img
                   src="/atham.JPG"
                   alt="NAVI Founder"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover overflow-hidden"
                 />
               </div>
 
@@ -27,13 +27,12 @@ export function FounderSection() {
               <div className="p-8 md:p-10 flex flex-col justify-center">
                 <Quote className="w-10 h-10 text-accent mb-6" />
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                  Assalomu alaykum! Mening orzuim — bolalar va yoshlar uchun
-                  faqat o‘qish emas, balki yaratishni o‘rgatadigan platformani
-                  yaratish. NAVI orqali biz kelajak mutaxassislarini
-                  tarbiyalaymiz, ular o‘z g‘oyalarini amalga oshiradi va dunyoga
-                  o‘z hissasini qo‘shadi. Biz bilan birga bolalar nafaqat bilim
-                  oladi, balki o‘z salohiyatini ochadi va yangi imkoniyatlarni
-                  kashf etadi.”
+                  Mening orzuim — bolalar va yoshlar uchun faqat o‘qish emas,
+                  balki yaratishni o‘rgatadigan platformani yaratish. NAVI
+                  orqali biz kelajak mutaxassislarini tarbiyalaymiz, ular o‘z
+                  g‘oyalarini amalga oshiradi va dunyoga o‘z hissasini qo‘shadi.
+                  Biz bilan birga bolalar nafaqat bilim oladi, balki o‘z
+                  salohiyatini ochadi va yangi imkoniyatlarni kashf etadi.”
                 </p>
                 <div>
                   <h3 className="text-xl font-bold text-card-foreground mb-1">

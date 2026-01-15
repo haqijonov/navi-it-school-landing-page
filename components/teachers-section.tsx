@@ -16,7 +16,7 @@ const teachers = [
     name: "Islom Shahobiddinov",
     role: "AI Mutaxasis",
     experience: "Dasturlash va AI da 3+ tajribaga ega",
-    image: "/male-ai-specialist-teacher-portrait-professisonal.jpg",
+    image: "/islom.jpeg",
   },
   {
     name: "Azamat Ergashev",
@@ -62,7 +62,7 @@ export function TeachersSection() {
                   <img
                     src={teacher.image || "/placeholder.svg"}
                     alt={teacher.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover scale-160 object-top"
                   />
                 </div>
                 <h3 className="text-xl font-bold text-card-foreground mb-2">

@@ -9,7 +9,7 @@ export function Header() {
 
   const navLinks = [
     { href: "#courses", label: "Kurslarimiz" },
-    { href: "#platform", label: "Platforma" },
+    // { href: "#platform", label: "Platforma" },
     { href: "#why-navi", label: "Nega NAVI" },
     { href: "#teachers", label: "Ustozlarimiz" },
   ];
@@ -37,14 +37,14 @@ export function Header() {
 
         {/* Desktop Button */}
         <a href="#contact-1" className="hidden md:block">
-          <Button className="bg-primary text-primary-foreground hover:bg-accent">
+          <Button className="bg-primary rounded-[30px]  text-primary-foreground hover:bg-accent">
             Biz bilan bog‘laning
           </Button>
         </a>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2"
+          className="md:hidden p-2 rounded-[30px]"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -80,7 +80,7 @@ export function Header() {
 
               <a
                 href="#contact-1"
-                className="bg-primary text-primary-foreground hover:bg-accent text-center py-2 rounded-md"
+                className="bg-primary text-primary-foreground hover:bg-accent text-center py-2 rounded-[30px]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Bizga qo‘shiling

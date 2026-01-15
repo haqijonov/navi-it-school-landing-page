@@ -44,11 +44,12 @@ export function CoursesSection() {
       <div className="container mx-auto px-4">
         <div className="text-left mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 text-balance">
-            Bizning Kurslarimiz
+            Bizning Kelajakka Safarimiz
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl ">
-            Keng qamrovli o'quv dasturi yosh o'quvchilarni ishonchli texnologiya
-            yaratuvchilariga aylantirish uchun mo'ljallangan.
+            Bizning platformamiz — shunchaki kurs emas, balki jonli yo‘l. Bu
+            yo‘lda biz bolalar bilan birga ularning hayotini nol darajadan
+            boshlab, to‘liq kasb va raqamli kelajak sari olib chiqamiz.
           </p>
         </div>
 

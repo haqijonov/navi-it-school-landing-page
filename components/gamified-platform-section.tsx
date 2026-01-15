@@ -33,7 +33,7 @@ export function GamifiedPlatformSection() {
               {features.map((feature) => (
                 <div
                   key={feature.label}
-                  className="flex items-center gap-3 bg-primary-foreground/10 rounded-xl p-4"
+                  className="flex items-center gap-3 bg-primary-foreground/10 rounded-[40px] p-4"
                 >
                   <feature.icon className="w-6 h-6 text-primary-foreground" />
                   <span className="font-medium">{feature.label}</span>
@@ -55,7 +55,7 @@ export function GamifiedPlatformSection() {
                 </div>
                 <div className="p-6">
                   {/* User Stats */}
-                  <div className="flex items-center gap-4 mb-6 p-4 bg-secondary rounded-xl">
+                  <div className="flex items-center gap-4 mb-6 p-4 bg-secondary rounded-[40px]">
                     <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                       <span className="text-primary-foreground font-bold">
                         M

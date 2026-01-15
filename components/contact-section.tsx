@@ -37,10 +37,11 @@ export function ContactSection({ id }: ContactSectionProps) {
           <Card className="bg-card border-border shadow-lg">
             <CardHeader className="text-center">
               <CardTitle className="text-3xl md:text-4xl font-bold text-card-foreground mb-2">
-                Biz Bilan Bog'laning
+                BEPUL konsultatsiya
               </CardTitle>
               <p className="text-muted-foreground">
-                Mutaxasislarimiz tomonidan savollaringizga batafsil javob oling
+                Telefon raqamingizni qoldiring — biz siz bilan tez orada
+                bog‘lanamiz
               </p>
             </CardHeader>
             <CardContent>
