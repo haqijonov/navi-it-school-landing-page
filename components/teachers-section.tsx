@@ -1,140 +1,229 @@
 "use client";
 
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { useRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { TeacherCard } from "./teacher-card";
+import {
+  titleReveal,
+  staggerContainer,
+  staggerItem,
+  viewportConfig,
+} from "@/animations/variants";
 
-const teachers = [
+interface Teacher {
+  name: string;
+  role: string;
+  expertise?: string;
+  image: string;
+  inspiringQuote: string;
+  yearsOfExperience?: number;
+  favoriteTech?: string;
+}
+
+const teachers: Teacher[] = [
   {
     name: "Mavlon Haqijonov",
     role: "Senior Web Developer",
-    experience: "O'qitishda 3+ yillik tajribaga ega",
+    expertise: "Frontend Mentor",
     image: "/female-web-developer-teacher-portrait-professionall.jpg",
+    inspiringQuote: "Men bolalarga g'oyalarni haqiqiy loyihalarga aylantirishda yordam beraman",
+    yearsOfExperience: 3,
+    favoriteTech: "React, JavaScript",
   },
   {
     name: "Islom Shahobiddinov",
     role: "AI Mutaxasis",
-    experience: "Dasturlash va AI da 3+ tajribaga ega",
+    expertise: "AI Coach",
     image: "/islom.jpeg",
+    inspiringQuote: "Kelajak AI bilan - men bu yo'lda yo'lboshchi bo'laman",
+    yearsOfExperience: 3,
+    favoriteTech: "AI, Machine Learning",
   },
   {
     name: "Azamat Ergashev",
     role: "Full-Stack Developer",
-    experience: "Dasturlashda va o'qitishda 4+ tajribaga ega ustoz",
+    expertise: "Full-Stack Mentor",
     image: "/female-full-stack-developder-teacher-portrait-profe.jpg",
+    inspiringQuote: "Har bir kod qatori - bu yangi imkoniyat. Keling, birga kashf qilamiz!",
+    yearsOfExperience: 4,
+    favoriteTech: "Node.js, React",
   },
 ];
 
 export function TeachersSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [isAtStart, setIsAtStart] = useState(true);
+  const [isAtEnd, setIsAtEnd] = useState(false);
 
-  const nextSlide = () => {
-    setActiveIndex((prev) => (prev + 1) % teachers.length);
+  const checkScrollPosition = () => {
+    if (!scrollContainerRef.current) return;
+
+    const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+    setIsAtStart(scrollLeft <= 10);
+    setIsAtEnd(scrollLeft >= scrollWidth - clientWidth - 10);
+    setCanScrollLeft(scrollLeft > 10);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
   };
 
-  const prevSlide = () => {
-    setActiveIndex((prev) => (prev - 1 + teachers.length) % teachers.length);
+  useEffect(() => {
+    checkScrollPosition();
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener("scroll", checkScrollPosition);
+      // Check on resize
+      window.addEventListener("resize", checkScrollPosition);
+      return () => {
+        container.removeEventListener("scroll", checkScrollPosition);
+        window.removeEventListener("resize", checkScrollPosition);
+      };
+    }
+  }, []);
+
+  const scroll = (direction: "left" | "right") => {
+    if (!scrollContainerRef.current) return;
+
+    const scrollAmount = 400;
+    const currentScroll = scrollContainerRef.current.scrollLeft;
+    const targetScroll =
+      direction === "left"
+        ? currentScroll - scrollAmount
+        : currentScroll + scrollAmount;
+
+    scrollContainerRef.current.scrollTo({
+      left: targetScroll,
+      behavior: "smooth",
+    });
   };
 
   return (
-    <section id="teachers" className="py-20 md:py-28 bg-background">
-      <div className="container mx-auto px-4">
-        <div className=" mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 text-balance">
-            Ustozlarimiz bilan tanishing
+    <section
+      id="teachers"
+      className="relative py-20 md:py-28 bg-background overflow-hidden"
+    >
+      {/* Background Decorative Elements */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+
+      <div className="container mx-auto px-4 md:px-12 relative z-10">
+        {/* Section Header */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={titleReveal}
+          className="text-center mb-16 max-w-3xl mx-auto"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
+            Ustozlarimiz bilan{" "}
+            <span className="text-primary bg-gradient-to-r from-primary via-cyan-500 to-primary bg-clip-text text-transparent">
+              tanishing
+            </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl ">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewportConfig}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="text-lg md:text-xl text-muted-foreground leading-relaxed"
+          >
             Farzandlarimizni kelajakka tayorlashda va eng zamonaviy
             texnalogiyalarni o'rgatishda mutaxasislarimiz
-          </p>
+          </motion.p>
+        </motion.div>
+
+        {/* Horizontal Scroll Container */}
+        <div className="relative">
+          {/* Scroll Buttons - Desktop Only */}
+          <div className="hidden md:block">
+            <button
+              onClick={() => scroll("left")}
+              disabled={isAtStart}
+              className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-12 h-12 rounded-full bg-background border-2 border-border shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+                isAtStart
+                  ? "opacity-50 cursor-not-allowed"
+                  : "opacity-100 hover:scale-110"
+              }`}
+              aria-label="Scroll teachers left"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            <button
+              onClick={() => scroll("right")}
+              disabled={isAtEnd}
+              className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-12 h-12 rounded-full bg-background border-2 border-border shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+                isAtEnd
+                  ? "opacity-50 cursor-not-allowed"
+                  : "opacity-100 hover:scale-110"
+              }`}
+              aria-label="Scroll teachers right"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Scrollable Cards Container */}
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-6 md:gap-8 overflow-x-auto overflow-y-hidden scrollbar-hide pb-8 scroll-smooth snap-x snap-mandatory"
+            style={{
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+              WebkitOverflowScrolling: "touch",
+            }}
+            role="region"
+            aria-label="Teachers carousel"
+            tabIndex={0}
+          >
+            {/* Snap Points */}
+            {teachers.map((teacher, index) => (
+              <motion.div
+                key={teacher.name}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportConfig}
+                variants={staggerItem}
+                transition={{ delay: index * 0.15 }}
+                className="flex-shrink-0 snap-center snap-always"
+                style={{
+                  scrollSnapAlign: "center",
+                }}
+              >
+                <TeacherCard teacher={teacher} index={index} />
+              </motion.div>
+            ))}
+
+            {/* Extra spacing at the end for better scroll UX */}
+            <div className="flex-shrink-0 w-4" aria-hidden="true" />
+          </div>
         </div>
 
-        {/* Desktop View */}
-        <div className="hidden md:grid md:grid-cols-3 gap-8">
-          {teachers.map((teacher) => (
-            <Card
-              key={teacher.name}
-              className="bg-card border-border text-center p-6 hover:shadow-lg transition-shadow"
-            >
-              <CardContent className="p-0">
-                <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary">
-                  <img
-                    src={teacher.image || "/placeholder.svg"}
-                    alt={teacher.name}
-                    className="w-full h-full object-cover scale-160 object-top"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-card-foreground mb-2">
-                  {teacher.name}
-                </h3>
-                <p className="text-accent font-medium mb-3">{teacher.role}</p>
-                <p className="text-muted-foreground text-sm">
-                  {teacher.experience}
-                </p>
-              </CardContent>
-            </Card>
+        {/* Scroll Indicator Dots - Mobile */}
+        <div className="md:hidden flex justify-center gap-2 mt-8">
+          {teachers.map((_, index) => (
+            <div
+              key={index}
+              className="w-2 h-2 rounded-full bg-primary/30 transition-all duration-300"
+              aria-hidden="true"
+            />
           ))}
         </div>
 
-        {/* Mobile Carousel */}
-        <div className="md:hidden">
-          <Card className="bg-card border-border text-center p-6">
-            <CardContent className="p-0">
-              <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary">
-                <img
-                  src={teachers[activeIndex].image || "/placeholder.svg"}
-                  alt={teachers[activeIndex].name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-card-foreground mb-2">
-                {teachers[activeIndex].name}
-              </h3>
-              <p className="text-accent font-medium mb-3">
-                {teachers[activeIndex].role}
-              </p>
-              <p className="text-muted-foreground text-sm">
-                {teachers[activeIndex].experience}
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* Carousel Controls */}
-          <div className="flex items-center justify-center gap-4 mt-6">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={prevSlide}
-              className="border-border hover:bg-muted bg-transparent"
-            >
-              <ChevronLeft className="w-5 h-5" />
-              <span className="sr-only">Previous</span>
-            </Button>
-            <div className="flex gap-2">
-              {teachers.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveIndex(index)}
-                  className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                    index === activeIndex ? "bg-primary" : "bg-muted"
-                  }`}
-                  aria-label={`Go to teacher ${index + 1}`}
-                />
-              ))}
-            </div>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={nextSlide}
-              className="border-border hover:bg-muted bg-transparent"
-            >
-              <ChevronRight className="w-5 h-5" />
-              <span className="sr-only">Next</span>
-            </Button>
-          </div>
-        </div>
+        {/* Helper Text */}
+        <p className="text-center text-sm text-muted-foreground mt-8">
+          <span className="hidden md:inline">
+            Chapga/o'ngga surib barcha ustozlarni ko'ring
+          </span>
+          <span className="md:hidden">
+            Chapga/o'ngga surib barcha ustozlarni ko'ring
+          </span>
+        </p>
       </div>
+
     </section>
   );
 }

@@ -37,7 +37,10 @@ export function ContactSection({ id }: ContactSectionProps) {
           <Card className="bg-card border-border shadow-lg">
             <CardHeader className="text-center">
               <CardTitle className="text-3xl md:text-4xl font-bold text-card-foreground mb-2">
-                BEPUL konsultatsiya
+                BEPUL{" "}
+                <span className="text-primary bg-gradient-to-r from-primary via-cyan-500 to-primary bg-clip-text text-transparent">
+                  Konsultatsiya
+                </span>
               </CardTitle>
               <p className="text-muted-foreground">
                 Telefon raqamingizni qoldiring — biz siz bilan tez orada

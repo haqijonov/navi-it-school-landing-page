@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Nunito } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { FloatingContactButton } from "@/components/floating-contact-button"
 import "./globals.css"
 
 const nunito = Nunito({
@@ -33,6 +34,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${nunito.className} font-sans antialiased`}>
         {children}
+        <FloatingContactButton />
         <Analytics />
       </body>
     </html>

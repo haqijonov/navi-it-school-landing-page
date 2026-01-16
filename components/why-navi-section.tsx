@@ -1,178 +1,161 @@
 "use client";
 
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { CheckCircle2, Shield, Heart, Star } from "lucide-react";
+import { CircularVideoPlaceholder } from "./circular-video-placeholder";
 import {
-  ChevronLeft,
-  ChevronRight,
-  Play,
-  Brain,
-  Shield,
-  Rocket,
-} from "lucide-react";
+  titleReveal,
+  staggerContainer,
+  staggerItem,
+  slideInLeft,
+  slideInRight,
+  viewportConfig,
+} from "@/animations/variants";
 
-const values = [
-  {
-    icon: Brain,
-    title: "Tanqidiy Fikirlash",
-    description:
-      "Biz muammolarni hal qilish ko'nikmalarini va mantiqiy fikrlashni rivojlantiramiz, talabalarni raqamli dunyoda har qanday muammoni hal qilishga tayyorlaymiz.",
-    color: "bg-chart-1",
-  },
+const benefits = [
   {
     icon: Shield,
-    title: "Raqamli Madaniyat",
+    title: "Xavfsiz va ishonchli muhit",
     description:
-      "O'quvchilarimiz texnalogiyadan qanday foydalanish kerak ekanligini amaliy holatda o'rganishadi.",
-    color: "bg-chart-2",
+      "Bizning platformamizda har bir o'quvchi xavfsiz va qulay sharoitda o'rganadi. Professional murabbiylar va yaxshi tayyorlangan dasturlar bilan.",
   },
   {
-    icon: Rocket,
-    title: "Kelajakka tayyor ko'nikmalar",
+    icon: Star,
+    title: "Yuqori sifatli ta'lim",
     description:
-      "Eng so'ngi texnalogiyalarni ishlatishni o'rganishadi. Suniy intelektni to'g'ri yo'lda foydalanish ko'nikmalarini hosil qilishadi.",
-    color: "bg-chart-3",
+      "Eng zamonaviy metodlar va texnologiyalar bilan ta'minlangan dasturlar. Har bir dars qiziqarli va amaliy bilimlar bilan to'ldirilgan.",
+  },
+  {
+    icon: Heart,
+    title: "Shaxsiy yondashuv",
+    description:
+      "Har bir o‘quvchiga individual yondashuv. Kichik guruhlar va shaxsiy e’tibor orqali bola o‘z potentsialini to‘liq ochadi.",
   },
 ];
 
 export function WhyNaviSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const nextSlide = () => {
-    setActiveIndex((prev) => (prev + 1) % values.length);
-  };
-
-  const prevSlide = () => {
-    setActiveIndex((prev) => (prev - 1 + values.length) % values.length);
-  };
-
   return (
-    <section id="why-navi" className="py-20 md:py-28 bg-secondary">
-      <div className="container mx-auto px-4">
-        <div className="text-left mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 text-balance">
-            Nega NAVI?
+    <section
+      id="why-navi"
+      className="relative py-20 md:py-28 bg-background overflow-hidden"
+    >
+      {/* Background Decorative Elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
+
+      <div className="container mx-auto px-4 md:px-12 relative z-10">
+        {/* Section Header */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={titleReveal}
+          className="text-center mb-16 max-w-3xl mx-auto"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
+            Nega{" "}
+            <span className="text-primary bg-gradient-to-r from-primary via-cyan-500 to-primary bg-clip-text text-transparent">
+              NAVI
+            </span>
+            ?
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl ">
-            Nega ota-onalar aynan NAVI ni tanlashadi ?
-          </p>
-        </div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewportConfig}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="text-lg md:text-xl text-muted-foreground leading-relaxed"
+          >
+            Nega ota-onalar aynan NAVI ni tanlashadi? Keling, bizning
+            o'quvchilarimizning muvaffaqiyat hikoyalarini bilib oling.
+          </motion.p>
+        </motion.div>
 
-        {/* Desktop View */}
-        <div className="hidden md:grid md:grid-cols-3 gap-6">
-          {values.map((value, index) => (
-            <Card
-              key={value.title}
-              className="bg-card border-border overflow-hidden group hover:shadow-xl transition-all duration-300"
-            >
-              <CardContent className="p-0">
-                {/* Video placeholder */}
-                <div className="relative aspect-video bg-muted overflow-hidden">
-                  <img
-                    src={`/.jpg?height=300&width=400&query=${value.title} technology education kids`}
-                    alt={value.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-primary/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="w-14 h-14 bg-primary-foreground rounded-full flex items-center justify-center">
-                      <Play className="w-6 h-6 text-primary ml-1" />
-                    </div>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div
-                      className={`w-12 h-12 ${value.color} rounded-xl flex items-center justify-center`}
-                    >
-                      <value.icon className="w-6 h-6 text-primary-foreground" />
-                    </div>
-                    <h3 className="text-xl font-bold text-card-foreground">
-                      {value.title}
-                    </h3>
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {value.description}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Mobile Carousel */}
-        <div className="md:hidden">
-          <Card className="bg-card border-border overflow-hidden">
-            <CardContent className="p-0">
-              {/* Video placeholder */}
-              <div className="relative aspect-video bg-muted overflow-hidden">
-                <img
-                  src={`/.jpg?height=300&width=400&query=${values[activeIndex].title} technology education kids`}
-                  alt={values[activeIndex].title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-primary/40 flex items-center justify-center">
-                  <div className="w-14 h-14 bg-primary-foreground rounded-full flex items-center justify-center">
-                    <Play className="w-6 h-6 text-primary ml-1" />
-                  </div>
-                </div>
-              </div>
-              <div className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className={`w-12 h-12 ${values[activeIndex].color} rounded-xl flex items-center justify-center`}
+        {/* Main Content: Text + Circular Video */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left: Text Content */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportConfig}
+            variants={slideInLeft}
+            className="space-y-8 order-2 lg:order-1"
+          >
+            <div className="space-y-6">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewportConfig}
+                transition={{ delay: 0.1, duration: 0.6 }}
+                className="text-xl md:text-2xl text-foreground font-semibold leading-relaxed"
+              >
+                Har bir bola kelajakda muvaffaqiyatli bo'lishi mumkin — biz
+                ularga yo'l ko'rsatamiz
+              </motion.p>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportConfig}
+                variants={staggerContainer}
+                className="space-y-4"
+              >
+                {benefits.map((benefit, index) => (
+                  <motion.div
+                    key={index}
+                    variants={staggerItem}
+                    className="flex gap-4 p-4 rounded-xl bg-card border border-border hover:border-primary/30 hover:shadow-md transition-all duration-300 group"
                   >
-                    {(() => {
-                      const Icon = values[activeIndex].icon;
-                      return (
-                        <Icon className="w-6 h-6 text-primary-foreground" />
-                      );
-                    })()}
-                  </div>
-                  <h3 className="text-xl font-bold text-card-foreground">
-                    {values[activeIndex].title}
-                  </h3>
-                </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  {values[activeIndex].description}
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Carousel Controls */}
-          <div className="flex items-center justify-center gap-4 mt-6">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={prevSlide}
-              className="border-border hover:bg-muted bg-transparent"
-            >
-              <ChevronLeft className="w-5 h-5" />
-              <span className="sr-only">Previous</span>
-            </Button>
-            <div className="flex gap-2">
-              {values.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveIndex(index)}
-                  className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                    index === activeIndex ? "bg-primary" : "bg-muted"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center transition-colors">
+                      <benefit.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-foreground mb-2 text-lg">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {benefit.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
             </div>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={nextSlide}
-              className="border-border hover:bg-muted bg-transparent"
+
+            {/* Trust Indicators */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewportConfig}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="pt-6 border-t border-border"
             >
-              <ChevronRight className="w-5 h-5" />
-              <span className="sr-only">Next</span>
-            </Button>
-          </div>
+              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                  <span>500+ o'quvchilar</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                  <span>7+ yillik tajriba</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                  <span>Professional murabbiylar</span>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right: Circular Video Placeholder */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportConfig}
+            variants={slideInRight}
+            className="order-1 lg:order-2 flex items-center justify-center"
+          >
+            <CircularVideoPlaceholder />
+          </motion.div>
         </div>
       </div>
     </section>
