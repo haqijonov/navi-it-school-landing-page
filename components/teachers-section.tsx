@@ -28,13 +28,14 @@ const teachers: Teacher[] = [
     role: "Senior Web Developer",
     expertise: "Frontend Mentor",
     image: "/female-web-developer-teacher-portrait-professionall.jpg",
-    inspiringQuote: "Men bolalarga g'oyalarni haqiqiy loyihalarga aylantirishda yordam beraman",
+    inspiringQuote:
+      "Men bolalarga g'oyalarni haqiqiy loyihalarga aylantirishda yordam beraman",
     yearsOfExperience: 3,
     favoriteTech: "React, JavaScript",
   },
   {
     name: "Islom Shahobiddinov",
-    role: "AI Mutaxasis",
+    role: "Softwear Enginer",
     expertise: "AI Coach",
     image: "/islom.jpeg",
     inspiringQuote: "Kelajak AI bilan - men bu yo'lda yo'lboshchi bo'laman",
@@ -46,7 +47,8 @@ const teachers: Teacher[] = [
     role: "Full-Stack Developer",
     expertise: "Full-Stack Mentor",
     image: "/female-full-stack-developder-teacher-portrait-profe.jpg",
-    inspiringQuote: "Har bir kod qatori - bu yangi imkoniyat. Keling, birga kashf qilamiz!",
+    inspiringQuote:
+      "Har bir kod qatori - bu yangi imkoniyat. Keling, birga kashf qilamiz!",
     yearsOfExperience: 4,
     favoriteTech: "Node.js, React",
   },
@@ -223,7 +225,6 @@ export function TeachersSection() {
           </span>
         </p>
       </div>
-
     </section>
   );
 }
