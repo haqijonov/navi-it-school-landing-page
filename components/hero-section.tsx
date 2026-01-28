@@ -44,8 +44,8 @@ export function HeroSection() {
         <div className="flex flex-col items-center max-w-5xl mx-auto">
           {/* Experience Badge */}
           <div className="mb-8 px-6 py-3 rounded-full bg-muted border border-border flex items-center gap-2">
-            <Trophy className="w-5 h-5 text-accent" />
-            <span className="text-sm md:text-base font-medium text-foreground">
+            <Trophy className="w-5 h-5 text-white" />
+            <span className="text-sm md:text-base font-medium text-white">
               5 yildan ortiq bolalarni o'qitamiz
             </span>
           </div>
@@ -131,16 +131,8 @@ export function HeroSection() {
                 Bepul dars
               </Button>
             </a>
-            <a href="#courses" className="w-full sm:w-auto">
-              <Button
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto border-2 border-primary hover:text-primary text-primary hover:bg-primary/5 text-base md:text-lg px-8 md:px-12 py-6 md:py-7 font-semibold rounded-full bg-background"
-              >
-                Narxlar
-              </Button>
-            </a>
-            <a href="#contact-1" className="w-full sm:w-auto">
+
+            <a href="#why-navi" className="w-full sm:w-auto">
               <Button
                 variant="outline"
                 size="lg"

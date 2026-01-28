@@ -27,7 +27,7 @@ const teachers: Teacher[] = [
     name: "Mavlon Haqijonov",
     role: "Senior Web Developer",
     expertise: "Frontend Mentor",
-    image: "/female-web-developer-teacher-portrait-professionall.jpg",
+    image: "/mavlon.png",
     inspiringQuote:
       "Men bolalarga g'oyalarni haqiqiy loyihalarga aylantirishda yordam beraman",
     yearsOfExperience: 3,
@@ -46,7 +46,7 @@ const teachers: Teacher[] = [
     name: "Azamat Ergashev",
     role: "Full-Stack Developer",
     expertise: "Full-Stack Mentor",
-    image: "/female-full-stack-developder-teacher-portrait-profe.jpg",
+    image: "/azamat.png",
     inspiringQuote:
       "Har bir kod qatori - bu yangi imkoniyat. Keling, birga kashf qilamiz!",
     yearsOfExperience: 4,

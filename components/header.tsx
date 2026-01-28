@@ -40,9 +40,7 @@ export function Header() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? "py-2"
-            : "py-4 md:py-6"
+          isScrolled ? "py-2" : "py-4 md:py-6"
         }`}
       >
         {/* Background with gradient and blur */}
@@ -72,13 +70,17 @@ export function Header() {
               }`}
               aria-label="NAVI - Bosh sahifa"
             >
-              <span className="bg-gradient-to-r from-primary via-cyan-500 to-primary bg-clip-text text-transparent">
+              {/* <span className="bg-gradient-to-r from-primary via-cyan-500 to-primary bg-clip-text text-transparent">
                 NAVI
-              </span>
+              </span> */}
+              <img className="w-[120px]" src="/main-logo.png" alt="logo" />
             </a>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-8" aria-label="Asosiy navigatsiya">
+            <nav
+              className="hidden  lg:flex items-center gap-8"
+              aria-label="Asosiy navigatsiya"
+            >
               {navLinks.map((link) => (
                 <NavLink key={link.href} href={link.href}>
                   {link.label}
@@ -136,7 +138,13 @@ export function Header() {
   );
 }
 
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+function NavLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -147,8 +155,10 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
         const scrollPosition = window.scrollY + 150; // Offset for header height
         const sectionTop = rect.top + window.scrollY;
         const sectionBottom = sectionTop + rect.height;
-        
-        setIsActive(scrollPosition >= sectionTop && scrollPosition < sectionBottom);
+
+        setIsActive(
+          scrollPosition >= sectionTop && scrollPosition < sectionBottom
+        );
       }
     };
 
@@ -190,7 +200,12 @@ interface MobileMenuProps {
   phoneNumber: string;
 }
 
-function MobileMenu({ isOpen, onClose, navLinks, phoneNumber }: MobileMenuProps) {
+function MobileMenu({
+  isOpen,
+  onClose,
+  navLinks,
+  phoneNumber,
+}: MobileMenuProps) {
   return (
     <>
       {/* Overlay */}
@@ -258,11 +273,7 @@ function MobileMenu({ isOpen, onClose, navLinks, phoneNumber }: MobileMenuProps)
           </a>
 
           {/* CTA Button */}
-          <a
-            href="#contact-2"
-            onClick={onClose}
-            className="mt-4"
-          >
+          <a href="#contact-2" onClick={onClose} className="mt-4">
             <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-6 rounded-full font-semibold shadow-lg">
               Bog'laning
             </Button>

@@ -1,7 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { HelpCircle, GraduationCap, Laptop, MapPin, MessageCircle } from "lucide-react";
+import {
+  HelpCircle,
+  GraduationCap,
+  Laptop,
+  MapPin,
+  MessageCircle,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import {
   Accordion,
@@ -26,15 +32,15 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "Qanday qilib o'qitish tizimi ishlaydi?",
+    question: "Dars qanday olib boriladi?",
     answer:
-      "Bizning o'qitish tizimi onlayn platformada amalga oshiriladi. Har bir dars jonli (live) tarzda o'tkaziladi, bu yerda o'quvchilar o'qituvchi bilan bevosita aloqa qilish imkoniyatiga ega. Darslardan tashqari, o'quvchilar amaliy mashg'ulotlar bajaradilar, loyihalar yaratadilar va murabbiylardan individual yordam olishadi. Har bir kurs darslar, vazifalar, video materiallar va doimiy mentorlar qo'llab-quvvatlashi bilan to'liq tayyorlangan dasturga ega.",
+      "Bizning o'qitish tizimimiz onlayn platformada amalga oshiriladi. Har bir dars jonli (live) tarzda o'tkaziladi, bu yerda o'quvchilar o'qituvchi bilan bevosita aloqa qilish imkoniyatiga ega. Darslardan tashqari, o'quvchilar amaliy mashg'ulotlar bajaradilar, loyihalar yaratadilar va murabbiylardan individual yordam oladilar. Darslar haftasiga 3 marta, har bir dars 1 siatdan o'tkaziladi, har bir o'quvchi bilan ustoz va mentor (yordamchi ustoz) doimiy ravishda shug'ullanadi.",
     icon: HelpCircle,
   },
   {
-    question: "Qanday yoshdagi bolalar qabul qilinadi?",
+    question: "Kimlar uchun?",
     answer:
-      "Bizning kurslarimiz 10-17 yoshdagi bolalar va o'smirlar uchun mo'ljallangan. Har bir yosh guruhiga moslashtirilgan dasturlar va metodlar bilan ta'minlaymiz. Yosh guruhiga qarab, o'qitish usullari va loyihalar murakkabligi o'zgaradi, lekin har bir bola o'z salohiyatini ochish imkoniyatiga ega.",
+      "NAVI - farzandingiz kelajagini bugundan o'ylaydigan ota-onalar tanlovi. Biz IT va sun'iy intellekt orqali 10-17 yoshdagi bolalarda zamonaviy fikrlashni va kelajak kasblariga tayyorgarlikni shakllantiramiz. NAVI - bu oddiy kurs emas, balki farzandingizning mustaqil hayoti va kelajagiga qaratilgan ongli sarmoya.",
     icon: GraduationCap,
   },
   {
@@ -45,8 +51,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: "Kurslar qancha turadi?",
-    answer:
-      "Har bir kurs narxi uning davomiyligi, mazmuni va o'qitish usullariga bog'liq. Aniq narxlarni bilish uchun, iltimos, biz bilan bog'laning. Biz sizga barcha kurslar haqida batafsil ma'lumot beramiz va sizga eng mos variantni tanlashda yordam beramiz. Shuningdek, bepul konsultatsiya va sinov darslarini taklif qilamiz.",
+    answer: "1 oy - 490 000 so'm (oyiga - 490 000).",
     icon: Laptop,
   },
   {
@@ -111,9 +116,7 @@ export function FAQSection() {
 
         {/* CTA at bottom */}
         <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">
-            Boshqa savolingiz bormi?
-          </p>
+          <p className="text-muted-foreground mb-4">Boshqa savolingiz bormi?</p>
           <a
             href="#contact-2"
             className="inline-block px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
@@ -141,31 +144,31 @@ function FAQCard({ faq, index }: { faq: FAQItem; index: number }) {
         value={`item-${index}`}
         className="border-none data-[state=open]:mb-4"
       >
-      <Card className="bg-card border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 overflow-hidden">
-        <AccordionTrigger className="px-6 py-5 hover:no-underline group">
-          <div className="flex items-center gap-4 flex-1 text-left">
-            {/* Icon */}
-            <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center transition-colors duration-300 group-data-[state=open]:bg-primary/20">
-              <Icon className="w-6 h-6 text-primary transition-transform duration-300 group-data-[state=open]:rotate-12" />
+        <Card className="bg-card border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 overflow-hidden">
+          <AccordionTrigger className="px-6 py-5 hover:no-underline group">
+            <div className="flex items-center gap-4 flex-1 text-left">
+              {/* Icon */}
+              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center transition-colors duration-300 group-data-[state=open]:bg-primary/20">
+                <Icon className="w-6 h-6 text-primary transition-transform duration-300 group-data-[state=open]:rotate-12" />
+              </div>
+
+              {/* Question */}
+              <h3 className="text-lg md:text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                {faq.question}
+              </h3>
             </div>
+          </AccordionTrigger>
 
-            {/* Question */}
-            <h3 className="text-lg md:text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
-              {faq.question}
-            </h3>
-          </div>
-        </AccordionTrigger>
-
-        <AccordionContent className="px-6 pb-6 pt-0">
-          <div className="pl-16 relative">
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/30 to-transparent rounded-full" />
-            <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-              {faq.answer}
-            </p>
-          </div>
-        </AccordionContent>
-      </Card>
-    </AccordionItem>
+          <AccordionContent className="px-6 pb-6 pt-0">
+            <div className="pl-16 relative">
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/30 to-transparent rounded-full" />
+              <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
+                {faq.answer}
+              </p>
+            </div>
+          </AccordionContent>
+        </Card>
+      </AccordionItem>
     </motion.div>
   );
 }

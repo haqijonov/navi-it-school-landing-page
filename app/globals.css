@@ -16,12 +16,12 @@
   --card-foreground: oklch(0.25 0.02 230);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.25 0.02 230);
-  --primary: oklch(0.45 0.15 230);
+  --primary: #2563eb;
   --primary-foreground: oklch(0.99 0.005 230);
   --secondary: oklch(0.93 0.03 230);
   --secondary-foreground: oklch(0.35 0.1 230);
-  --muted: oklch(0.95 0.02 230);
-  --muted-foreground: oklch(0.5 0.05 230);
+  --muted: #2564ebae;
+  --muted-foreground: #000000;
   --accent: oklch(0.65 0.12 230);
   --accent-foreground: oklch(0.99 0.005 230);
   --destructive: oklch(0.577 0.245 27.325);
