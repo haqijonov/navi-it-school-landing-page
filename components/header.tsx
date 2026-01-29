@@ -44,13 +44,7 @@ export function Header() {
         }`}
       >
         {/* Background with gradient and blur */}
-        <div
-          className={`absolute inset-0 transition-all duration-500 ${
-            isScrolled
-              ? "bg-background/95 backdrop-blur-xl shadow-lg shadow-primary/5"
-              : "bg-background/80 backdrop-blur-md"
-          }`}
-        />
+        <div className={`absolute inset-0 transition-all duration-500 `} />
 
         {/* Decorative gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-50" />
@@ -58,7 +52,7 @@ export function Header() {
         {/* Container */}
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <div
-            className={`flex items-center justify-between transition-all duration-500 ${
+            className={`flex items-center justify-between transition-all lg:border py-2 px-4 rounded-full border-primary  duration-500 ${
               isScrolled ? "max-w-7xl mx-auto" : ""
             }`}
           >
@@ -157,7 +151,7 @@ function NavLink({
         const sectionBottom = sectionTop + rect.height;
 
         setIsActive(
-          scrollPosition >= sectionTop && scrollPosition < sectionBottom
+          scrollPosition >= sectionTop && scrollPosition < sectionBottom,
         );
       }
     };
