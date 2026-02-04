@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Container } from "@/components/ui/container";
 import { CheckCircle2, Shield, Heart, Star } from "lucide-react";
 import { CircularVideoPlaceholder } from "./circular-video-placeholder";
 import {
@@ -43,7 +44,7 @@ export function WhyNaviSection() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
 
-      <div className="container mx-auto px-4 md:px-12 relative z-10">
+      <Container className="relative z-10">
         {/* Section Header */}
         <motion.div
           initial="hidden"
@@ -53,11 +54,9 @@ export function WhyNaviSection() {
           className="text-center mb-16 max-w-3xl mx-auto"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
-            Nega{" "}
-            <span className="text-primary bg-gradient-to-r from-primary via-cyan-500 to-primary bg-clip-text text-transparent">
-              NAVI
+            <span className="text-primary bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent">
+              Nega NAVI ?
             </span>
-            ?
           </h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -157,7 +156,7 @@ export function WhyNaviSection() {
             <CircularVideoPlaceholder />
           </motion.div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

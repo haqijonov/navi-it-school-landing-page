@@ -1,15 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Play, Sparkles } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Pause, Play, Sparkles } from "lucide-react";
 import { scaleInRotate, viewportConfig } from "@/animations/variants";
 
 interface CircularVideoPlaceholderProps {
@@ -19,16 +12,52 @@ interface CircularVideoPlaceholderProps {
 export function CircularVideoPlaceholder({
   onClick,
 }: CircularVideoPlaceholderProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isTouchActive, setIsTouchActive] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const touchTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const handleClick = () => {
+  const handleTogglePlay = async () => {
     if (onClick) {
       onClick();
+    }
+
+    const video = videoRef.current;
+    if (!video) {
+      return;
+    }
+
+    if (video.paused) {
+      try {
+        await video.play();
+      } catch {
+        return;
+      }
     } else {
-      setIsModalOpen(true);
+      video.pause();
     }
   };
+
+  const handleTouchActivate = () => {
+    setIsTouchActive(true);
+    if (touchTimeoutRef.current) {
+      clearTimeout(touchTimeoutRef.current);
+    }
+    touchTimeoutRef.current = setTimeout(() => {
+      setIsTouchActive(false);
+    }, 2000);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (touchTimeoutRef.current) {
+        clearTimeout(touchTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const showControl = !isPlaying || isHovered || isTouchActive;
 
   return (
     <>
@@ -37,7 +66,7 @@ export function CircularVideoPlaceholder({
         whileInView="visible"
         viewport={viewportConfig}
         variants={scaleInRotate}
-        className="relative w-full max-w-md mx-auto aspect-square flex items-center justify-center"
+        className="group relative w-full max-w-md mx-auto aspect-square flex items-center justify-center"
       >
         {/* Outer Glow Effect */}
         <div
@@ -62,7 +91,7 @@ export function CircularVideoPlaceholder({
           />
 
           {/* Rotating Text Circle */}
-          <div className="absolute inset-0 w-full h-full animate-spin-slow">
+          <div className="absolute left-1/2 top-1/2 w-[120%] h-[120%] -translate-x-1/2 -translate-y-1/2 animate-spin-slow pointer-events-none z-0">
             <svg
               className="w-full h-full"
               viewBox="0 0 400 400"
@@ -90,8 +119,48 @@ export function CircularVideoPlaceholder({
             </svg>
           </div>
 
+          {/* Video Circle */}
+          <div
+            className="absolute inset-4 sm:inset-5 md:inset-6 rounded-full overflow-hidden shadow-2xl ring-2 ring-primary/20 z-20"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onTouchStart={handleTouchActivate}
+          >
+            <video
+              ref={videoRef}
+              className="w-full h-full object-cover transition duration-200 group-hover:brightness-105"
+              src="/nega-aynan.mp4"
+              playsInline
+              preload="metadata"
+              poster="/video-poster.jpeg"
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+              onEnded={() => setIsPlaying(false)}
+            />
+
+            {/* Play/Pause Overlay */}
+            <button
+              type="button"
+              onClick={handleTogglePlay}
+              aria-label={isPlaying ? "Pause video" : "Play video"}
+              className={`absolute inset-0 z-30 flex items-center justify-center transition-[opacity,transform] duration-200 focus:outline-none focus:ring-4 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background ${
+                showControl
+                  ? "opacity-100 scale-100"
+                  : "opacity-0 scale-95 pointer-events-none"
+              }`}
+            >
+              <span className="flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full bg-black/40 backdrop-blur-md ring-1 ring-white/20 text-white shadow-xl">
+                {isPlaying ? (
+                  <Pause className="w-10 h-10 md:w-12 md:h-12" />
+                ) : (
+                  <Play className="w-10 h-10 md:w-12 md:h-12 ml-1" />
+                )}
+              </span>
+            </button>
+          </div>
+
           {/* Decorative Dots */}
-          <div className="absolute inset-0 rounded-full opacity-20">
+          <div className="absolute inset-0 rounded-full opacity-20 z-10 pointer-events-none">
             <div
               className="absolute inset-0"
               style={{
@@ -101,82 +170,9 @@ export function CircularVideoPlaceholder({
             />
           </div>
 
-          {/* Play Button */}
-          <button
-            onClick={handleClick}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            aria-label="Play Why NAVI video"
-            className={`relative z-20 w-24 h-24 md:w-28 md:h-28 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background ${
-              isHovered
-                ? "scale-110 shadow-2xl shadow-primary/50"
-                : "hover:scale-105"
-            }`}
-          >
-            {/* Pulsing Ring */}
-            <div
-              className={`absolute inset-0 rounded-full bg-primary/30 ${
-                isHovered ? "animate-ping" : ""
-              }`}
-              style={{
-                animation: isHovered
-                  ? "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite"
-                  : "none",
-              }}
-            />
-            <Play
-              className={`w-10 h-10 md:w-12 md:h-12 ml-1 transition-transform duration-300 ${
-                isHovered ? "scale-110" : ""
-              }`}
-              fill="currentColor"
-            />
-          </button>
-
           {/* Coming Soon Badge */}
-          <div
-            className={`absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-background border-2 border-primary/30 shadow-lg backdrop-blur-sm transition-all duration-300 ${
-              isHovered ? "scale-105 border-primary/50" : ""
-            }`}
-          >
-            <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-semibold text-primary">
-                Tez orada
-              </span>
-            </div>
-            <p className="text-xs text-muted-foreground text-center mt-1">
-              Ota-onalar hikoyalari
-            </p>
-          </div>
         </div>
       </motion.div>
-
-      {/* Coming Soon Modal */}
-      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-md">
-          <DialogHeader>
-            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mx-auto mb-4">
-              <Sparkles className="w-8 h-8 text-primary" />
-            </div>
-            <DialogTitle className="text-2xl text-center">
-              Tez orada!
-            </DialogTitle>
-            <DialogDescription className="text-center pt-2">
-              Ota-onalar hikoyalari videolari yaqin orada qo'shiladi. Bizning
-              o'quvchilarning muvaffaqiyat hikoyalarini va ota-onalarning
-              sharhlarini ko'rish uchun qaytib turing.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="pt-4">
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="w-full py-3 px-6 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
-            >
-              Tushundim
-            </button>
-          </div>
-        </DialogContent>
-      </Dialog>
     </>
   );
 }

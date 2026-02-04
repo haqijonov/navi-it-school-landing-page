@@ -1,120 +1,260 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  HelpCircle,
-  GraduationCap,
-  Laptop,
-  MapPin,
-  MessageCircle,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Card } from "@/components/ui/card";
-import {
-  titleReveal,
-  staggerContainer,
-  staggerItem,
-  accordionItemReveal,
-  viewportConfig,
-} from "@/animations/variants";
+import { Container } from "@/components/ui/container";
 
 interface FAQItem {
   question: string;
   answer: string;
-  icon: LucideIcon;
+  position: string;
+  tail: string;
 }
 
 const faqs: FAQItem[] = [
   {
-    question: "Dars qanday olib boriladi?",
-    answer:
-      "Bizning o'qitish tizimimiz onlayn platformada amalga oshiriladi. Har bir dars jonli (live) tarzda o'tkaziladi, bu yerda o'quvchilar o'qituvchi bilan bevosita aloqa qilish imkoniyatiga ega. Darslardan tashqari, o'quvchilar amaliy mashg'ulotlar bajaradilar, loyihalar yaratadilar va murabbiylardan individual yordam oladilar. Darslar haftasiga 3 marta, har bir dars 1 siatdan o'tkaziladi, har bir o'quvchi bilan ustoz va mentor (yordamchi ustoz) doimiy ravishda shug'ullanadi.",
-    icon: HelpCircle,
+    question: "Darslar qanday formatda o'tadi?",
+    answer: "Jonli onlayn dars + loyiha. Har bola bilan individual yondashuv.",
+    position: "left-0 top-6",
+    tail: "left-[70%] top-full rotate-12",
   },
   {
-    question: "Kimlar uchun?",
-    answer:
-      "NAVI - farzandingiz kelajagini bugundan o'ylaydigan ota-onalar tanlovi. Biz IT va sun'iy intellekt orqali 10-17 yoshdagi bolalarda zamonaviy fikrlashni va kelajak kasblariga tayyorgarlikni shakllantiramiz. NAVI - bu oddiy kurs emas, balki farzandingizning mustaqil hayoti va kelajagiga qaratilgan ongli sarmoya.",
-    icon: GraduationCap,
+    question: "Farzandimga qiyin bo'lib qolmaydimi?",
+    answer: "Bosqichma-bosqich, yumshoq ritmda. Ishonch asta-sekin oshadi.",
+    position: "right-0 top-16",
+    tail: "right-[65%] top-full -rotate-12",
   },
   {
-    question: "Siz qayerda joylashgansiz?",
-    answer:
-      "Biz butunlay onlayn platformamiz. O'quvchilar qayerda bo'lishidan qat'iy nazar, internet orqali bizning kurslarimizga qo'shilishlari mumkin. Bu sizga va farzandingizga qulaylik beradi — uydan chiqmasdan sifatli ta'lim olish imkoniyatini ta'minlaydi.",
-    icon: MapPin,
+    question: "Natija nimada ko'rinadi?",
+    answer: "Fikrlash, mustaqil yechim va o'ziga ishonch kuchayadi.",
+    position: "left-6 bottom-12",
+    tail: "left-[60%] -top-2 rotate-6",
   },
   {
-    question: "Kurslar qancha turadi?",
-    answer: "1 oy - 490 000 so'm (oyiga - 490 000).",
-    icon: Laptop,
+    question: "AI bolaga qanday foyda beradi?",
+    answer:
+      "AI - hamkor. To'g'ri savol berish va mas'uliyatli ishlashni o'rgatadi.",
+    position: "right-8 bottom-4",
+    tail: "right-[60%] -top-2 -rotate-6",
   },
   {
-    question: "NAVI bilan qanday bog'lanish mumkin?",
-    answer:
-      "Biz bilan bog'lanish uchun sahifadagi 'Bog'lanish' tugmasini yoki kontakt formasidan foydalanishingiz mumkin. Telefon raqamingizni qoldiring va biz sizga tez orada qayta qo'ng'iroq qilamiz. Shuningdek, bepul konsultatsiya olish va sinov darsiga yozilish uchun ham biz bilan bog'laning. Biz sizning barcha savollaringizga javob berishga tayyormiz!",
-    icon: MessageCircle,
+    question: "Qachon boshlash mumkin?",
+    answer: "Hohlagan paytda. Biz mos guruh va jadvalni topib beramiz.",
+    position: "left-1/2 -translate-x-1/2 top-[84%]",
+    tail: "left-1/2 -top-2 -translate-x-1/2",
   },
 ];
+
+const bubbleMotion = {
+  initial: { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0 },
+};
 
 export function FAQSection() {
   return (
     <section
       id="faq"
-      className="relative py-20 md:py-28 bg-secondary overflow-hidden"
+      className="relative bg-secondary py-20 md:py-28 overflow-hidden"
+      aria-labelledby="faq-title"
     >
-      {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-
-      <div className="container mx-auto px-4 md:px-12 relative z-10">
-        {/* Section Header */}
+      <Container className="relative z-10">
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
-          variants={titleReveal}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16 max-w-3xl mx-auto"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
-            Tez-tez{" "}
-            <span className="text-primary bg-gradient-to-r from-primary via-cyan-500 to-primary bg-clip-text text-transparent">
-              so'raladigan savollar
+          <h2
+            id="faq-title"
+            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6"
+          >
+            <span className="text-primary bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent">
+              Ota-onalar so'raydigan savollar
             </span>
           </h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewportConfig}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-lg md:text-xl text-muted-foreground leading-relaxed"
-          >
-            Ota-onalar ko'pincha so'radigan savollarga javoblar. Boshqa
-            savolingiz bormi? Biz bilan bog'laning!
-          </motion.p>
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+            Bu yerda eng ko'p beriladigan savollar va qisqa, samimiy javoblar.
+          </p>
         </motion.div>
 
-        {/* FAQ Accordion */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
-          variants={staggerContainer}
-          className="max-w-4xl mx-auto"
-        >
-          <Accordion type="single" collapsible className="w-full space-y-4">
+        {/* Desktop radial layout */}
+        <div className="relative hidden lg:block">
+          <div className="relative mx-auto h-[520px] max-w-5xl">
+            {/* Center illustration */}
+            <motion.div
+              className="absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <svg
+                viewBox="0 0 480 480"
+                className="h-full w-full scale-[1.2] md:scale-[1.4]"
+                aria-hidden
+                style={{ background: "transparent" }}
+              >
+                <defs>
+                  {/* Gradient */}
+                  <linearGradient
+                    id="faq-center-glow"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="1"
+                  >
+                    <stop offset="0%" stopColor="#dff5ff" />
+                    <stop offset="50%" stopColor="#e9fbf3" />
+                    <stop offset="100%" stopColor="#eef3ff" />
+                  </linearGradient>
+
+                  {/* Blur */}
+                  <filter
+                    id="faq-soft-blur"
+                    x="-35%"
+                    y="-35%"
+                    width="170%"
+                    height="170%"
+                  >
+                    <feGaussianBlur stdDeviation="14" />
+                  </filter>
+
+                  {/* Main shape path (NEW SHAPE) */}
+                  <path
+                    id="faq-center-path"
+                    d="M437.3 158.3A99.5 99.5 0 0 0 321.6 42.8a99.5 99.5 0 0 0-163.4 0A99.5 99.5 0 0 0 42.7 158.3a99.5 99.5 0 0 0 0 163.4 99.5 99.5 0 0 0 115.6 115.6 99.5 99.5 0 0 0 163.4 0 99.5 99.5 0 0 0 115.5-115.6 99.5 99.5 0 0 0 0-163.4Z"
+                  />
+
+                  {/* Clip path */}
+                  <clipPath id="faq-center-clip" clipPathUnits="userSpaceOnUse">
+                    <use href="#faq-center-path" />
+                  </clipPath>
+                </defs>
+
+                {/* 🔹 Glow background */}
+                <use
+                  href="#faq-center-path"
+                  fill="url(#faq-center-glow)"
+                  filter="url(#faq-soft-blur)"
+                  opacity="0.95"
+                />
+
+                {/* 🔹 Image clipped inside shape */}
+                <g clipPath="url(#faq-center-clip)">
+                  <image
+                    href="/thinking-parent.jpg"
+                    x="0"
+                    y="0"
+                    width="480"
+                    height="480"
+                    preserveAspectRatio="xMidYMid slice"
+                  />
+                </g>
+
+                {/* 🔹 Soft shadow */}
+                <use
+                  href="#faq-center-path"
+                  fill="transparent"
+                  className="drop-shadow-[0_30px_70px_rgba(14,116,144,0.16)]"
+                />
+              </svg>
+            </motion.div>
+
+            {/* FAQ bubbles around */}
             {faqs.map((faq, index) => (
-              <FAQCard key={index} faq={faq} index={index} />
+              <motion.div
+                key={faq.question}
+                variants={bubbleMotion}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className={`absolute ${faq.position}`}
+              >
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 220, damping: 18 }}
+                  className="group relative max-w-[240px] rounded-3xl bg-white/90 px-5 py-4 text-left shadow-[0_18px_50px_rgba(15,23,42,0.08)]"
+                >
+                  <div
+                    className={`absolute ${faq.tail} h-3 w-3 rounded-full bg-white/90 shadow-[0_6px_16px_rgba(15,23,42,0.08)] transition-colors duration-300 group-hover:bg-primary/10`}
+                  />
+                  <p className="text-sm font-semibold text-foreground">
+                    {faq.question}
+                  </p>
+                  <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </motion.div>
+              </motion.div>
             ))}
-          </Accordion>
-        </motion.div>
+          </div>
+        </div>
 
-        {/* CTA at bottom */}
+        {/* Mobile stack */}
+        <div className="lg:hidden space-y-5">
+          <motion.div
+            className="mx-auto h-[220px] w-[220px]"
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <svg viewBox="0 0 320 320" className="h-full w-full" aria-hidden>
+              <defs>
+                <linearGradient
+                  id="faq-center-mobile"
+                  x1="0"
+                  y1="0"
+                  x2="1"
+                  y2="1"
+                >
+                  <stop offset="0%" stopColor="#dff5ff" />
+                  <stop offset="50%" stopColor="#e9fbf3" />
+                  <stop offset="100%" stopColor="#eef3ff" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M72 48 C122 20, 226 24, 268 86 C304 142, 286 232, 220 264 C154 296, 84 280, 44 214 C8 154, 22 82, 72 48 Z"
+                fill="url(#faq-center-mobile)"
+                className="drop-shadow-[0_24px_50px_rgba(14,116,144,0.14)]"
+              />
+              <circle cx="130" cy="150" r="28" fill="#ffffff" opacity="0.9" />
+              <rect
+                x="150"
+                y="120"
+                width="70"
+                height="60"
+                rx="24"
+                fill="#dff5ff"
+              />
+              <circle cx="172" cy="148" r="6" fill="#38bdf8" />
+              <circle cx="196" cy="148" r="6" fill="#38bdf8" />
+              <path
+                d="M132 184 C152 198, 186 198, 206 184"
+                stroke="#38bdf8"
+                strokeWidth="6"
+                strokeLinecap="round"
+                fill="none"
+              />
+            </svg>
+          </motion.div>
+
+          {faqs.map((faq, index) => (
+            <motion.div
+              key={faq.question}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.45, delay: index * 0.05 }}
+              className="rounded-3xl bg-white/90 px-5 py-4 text-left shadow-[0_14px_35px_rgba(15,23,42,0.08)]"
+            >
+              <p className="text-sm font-semibold text-foreground">
+                {faq.question}
+              </p>
+              <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                {faq.answer}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
         <div className="text-center mt-12">
           <p className="text-muted-foreground mb-4">Boshqa savolingiz bormi?</p>
           <a
@@ -124,51 +264,7 @@ export function FAQSection() {
             Biz bilan bog'laning
           </a>
         </div>
-      </div>
+      </Container>
     </section>
-  );
-}
-
-function FAQCard({ faq, index }: { faq: FAQItem; index: number }) {
-  const Icon = faq.icon;
-
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={viewportConfig}
-      variants={accordionItemReveal}
-      transition={{ delay: index * 0.1 }}
-    >
-      <AccordionItem
-        value={`item-${index}`}
-        className="border-none data-[state=open]:mb-4"
-      >
-        <Card className="bg-card border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 overflow-hidden">
-          <AccordionTrigger className="px-6 py-5 hover:no-underline group">
-            <div className="flex items-center gap-4 flex-1 text-left">
-              {/* Icon */}
-              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center transition-colors duration-300 group-data-[state=open]:bg-primary/20">
-                <Icon className="w-6 h-6 text-primary transition-transform duration-300 group-data-[state=open]:rotate-12" />
-              </div>
-
-              {/* Question */}
-              <h3 className="text-lg md:text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
-                {faq.question}
-              </h3>
-            </div>
-          </AccordionTrigger>
-
-          <AccordionContent className="px-6 pb-6 pt-0">
-            <div className="pl-16 relative">
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/30 to-transparent rounded-full" />
-              <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-                {faq.answer}
-              </p>
-            </div>
-          </AccordionContent>
-        </Card>
-      </AccordionItem>
-    </motion.div>
   );
 }

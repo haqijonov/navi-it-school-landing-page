@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Container } from "@/components/ui/container";
 import { Send, CheckCircle } from "lucide-react";
 
 interface ContactSectionProps {
@@ -32,16 +33,15 @@ export function ContactSection({ id }: ContactSectionProps) {
 
   return (
     <section id={id} className="py-20 md:py-28 bg-background">
-      <div className="container mx-auto px-4">
+      <Container>
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] items-center">
           {/* Left column: title, intro, form */}
           <div className="max-w-2xl w-full mx-auto">
             <Card className="bg-card border-border shadow-lg">
               <CardHeader className="text-center">
                 <CardTitle className="text-3xl md:text-4xl font-bold text-card-foreground mb-2">
-                  BEPUL{" "}
-                  <span className="text-primary bg-gradient-to-r from-primary via-cyan-500 to-primary bg-clip-text text-transparent">
-                    Konsultatsiya
+                  <span className="text-primary bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent">
+                    BEPUL Konsultatsiya
                   </span>
                 </CardTitle>
                 <p className="text-muted-foreground">
@@ -128,7 +128,7 @@ export function ContactSection({ id }: ContactSectionProps) {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
 
       {/* Subtle float animation with reduced-motion support */}
       <style jsx global>{`

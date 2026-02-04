@@ -1,380 +1,293 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  titleReveal,
-  staggerContainer,
-  staggerItem,
-  viewportConfig,
-} from "@/animations/variants";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
-  Code,
-  Palette,
-  FileCode,
-  Atom,
-  Sparkles,
-  ArrowRight,
-  CheckCircle2,
-  Clock,
-  Users,
-  Award,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-import { CourseDialog } from "./cource-ddiolog";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Container } from "@/components/ui/container";
 
-interface Course {
-  icon: LucideIcon;
+type Module = {
+  id: string;
   title: string;
-  shortDescription: string;
-  fullDescription: string;
-  tags: string[];
-  duration: string;
-  level: "Boshlang'ich" | "O'rta" | "Yuqori";
-  students: string;
-  features: string[];
-  gradient: string;
-  size: "small" | "medium" | "large";
-  span: {
-    mobile: string;
-    tablet: string;
-    desktop: string;
-  };
-}
+  description: string;
+  image: string;
+  shape?: "playA" | "playB" | "blob";
+  mediaLeft: boolean;
+};
 
-const courses: Course[] = [
+const modules: Module[] = [
   {
-    icon: Code,
-    title: "HTML",
-    shortDescription: "Veb-saytlaringizning asosini yarating",
-    fullDescription:
-      "HTML — bu har qanday veb-saytning asosi. Bu kursda siz HTML elementlari, struktur, semantika va zamonaviy HTML5 standartlarini o'rganasiz. Har bir darsdan keyin siz o'z loyihangizni yaratasiz va real veb-sahifalar qilishni boshlaysiz!",
-    tags: ["Boshlang'ich", "Loyiha", "Qiziqarli"],
-    duration: "6 hafta",
-    level: "Boshlang'ich",
-    students: "500+ o'quvchilar",
-    features: [
-      "HTML5 elementlari va semantik markup",
-      "Formalar va interaktiv elementlar",
-      "Media elementlari (rasm, video, audio)",
-      "Real loyihalar bilan amaliyot",
-      "Portfolio uchun 3 ta loyiha",
-    ],
-    gradient: "from-blue-500/20 via-cyan-500/20 to-blue-600/20",
-    size: "large",
-    span: {
-      mobile: "col-span-1 ",
-      tablet: "md:col-span-2",
-      desktop: "lg:col-span-2 row-span-1",
-    },
+    id: "module-1",
+    title: "Programming & Problem Solving",
+    description:
+      "Farzandingiz kod yozishni emas, muammoni yechishni o'rganadi. Har bir loyiha mantiq, sabr va tizimli fikrlashni mustahkamlaydi - natijada u o'ziga ishonch bilan yechim topa oladi.",
+    mediaLeft: true,
+    image: "/programming-online.jpg",
+    shape: "playA",
   },
   {
-    icon: Palette,
-    title: "CSS",
-    shortDescription: "Chiroyli va zamonaviy dizaynlar yarating",
-    fullDescription:
-      "CSS bilan veb-saytlaringizni yorqin, zamonaviy va chiroyli qiling! Flexbox, Grid, animatsiyalar, responsiv dizayn va boshqa kuchli CSS texnikalarini o'rganing. Har bir darsda yangi dizayn hiylalarini o'rganib, professional ko'rinishga ega bo'lasiz.",
-    tags: ["O'rta", "Dizayn", "Yaratuvchanlik"],
-    duration: "8 hafta",
-    level: "O'rta",
-    students: "450+ o'quvchilar",
-    features: [
-      "Flexbox va CSS Grid",
-      "Animatsiyalar va transitions",
-      "Responsiv dizayn (mobile-first)",
-      "CSS Variables va modern CSS",
-      "5 ta chiroyli loyiha",
-    ],
-    gradient: "from-cyan-500/20 via-blue-500/20 to-purple-500/20",
-    size: "medium",
-    span: {
-      mobile: "col-span-1",
-      tablet: "md:col-span-1",
-      desktop: "lg:col-span-2 row-span-1",
-    },
+    id: "module-2",
+    title: "Logical & Critical Thinking",
+    description:
+      "Biz bolalarga savol berishni, fikrni tahlil qilishni va dalil bilan qaror qilishni o'rgatamiz. Bu modul tafakkurni aniq, xotirjam va mustaqil qilishga xizmat qiladi.",
+    mediaLeft: false,
+    image: "/thinking.jpg",
+    shape: "blob",
   },
   {
-    icon: FileCode,
-    title: "JavaScript",
-    shortDescription: "Veb-saytlaringizni jonlantiring",
-    fullDescription:
-      "JavaScript — bu veb-saytlaringizni interaktiv qiladigan kuchli dasturlash tili! Bu kursda siz DOM manipulyatsiyasi, event handling, arrays, objects, functions va zamonaviy JavaScript (ES6+) ni o'rganasiz. O'qiganlaringizni darhol qo'llash orqali qiziqarli loyihalar yaratasiz!",
-    tags: ["O'rta", "Dasturlash", "Qiziqarli"],
-    duration: "10 hafta",
-    level: "O'rta",
-    students: "600+ o'quvchilar",
-    features: [
-      "JavaScript asoslari va ES6+",
-      "DOM manipulyatsiyasi",
-      "Event handling va asinxron kod",
-      "Array methods va object manipulation",
-      "6 ta interaktiv loyiha",
-    ],
-    gradient: "from-purple-500/20 via-blue-500/20 to-cyan-500/20",
-    size: "large",
-    span: {
-      mobile: "col-span-1",
-      tablet: "md:col-span-2",
-      desktop: "lg:col-span-3 row-span-1",
-    },
-  },
-  {
-    icon: Atom,
-    title: "React",
-    shortDescription: "Zamonaviy veb-ilovalar yarating",
-    fullDescription:
-      "React — bu dunyoda eng mashhur JavaScript kutubxonasi! Facebook tomonidan yaratilgan React bilan siz komponentli, tez va zamonaviy veb-ilovalar yaratasiz. Hooks, state management, routing va boshqa professional ko'nikmalarni o'rganib, o'z ilovangizni yarating!",
-    tags: ["Yuqori", "Framework", "Sertifikat"],
-    duration: "12 hafta",
-    level: "Yuqori",
-    students: "400+ o'quvchilar",
-    features: [
-      "React asoslari va hooks",
-      "State management va context",
-      "React Router va navigation",
-      "API integration va data fetching",
-      "To'liq stack loyiha (final project)",
-    ],
-    gradient: "from-blue-600/20 via-purple-500/20 to-cyan-500/20",
-    size: "medium",
-    span: {
-      mobile: "col-span-1",
-      tablet: "md:col-span-1",
-      desktop: "lg:col-span-1 row-span-1",
-    },
-  },
-  {
-    icon: Sparkles,
-    title: "AI Skills",
-    shortDescription: "Sun'iy intellekt bilan ishlashni o'rganing",
-    fullDescription:
-      "AI — bu kelajak! ChatGPT, MidJourney, DALL-E va boshqa AI vositalari bilan ishlashni o'rganing. Prompt engineering, AI-assisted coding, creative AI tools va qanday qilib AI dan samarali foydalanishni o'rganib, o'zingizni kelajakga tayyorlang!",
-    tags: ["O'rta", "AI", "Kelajak"],
-    duration: "8 hafta",
-    level: "O'rta",
-    students: "350+ o'quvchilar",
-    features: [
-      "ChatGPT va prompt engineering",
-      "AI for coding va development",
-      "Creative AI tools (MidJourney, DALL-E)",
-      "AI-assisted project building",
-      "Real-world AI applications",
-    ],
-    gradient: "from-cyan-500/20 via-purple-500/20 to-blue-600/20",
-    size: "large",
-    span: {
-      mobile: "col-span-1",
-      tablet: "md:col-span-2",
-      desktop: "lg:col-span-4 row-span-1",
-    },
+    id: "module-3",
+    title: "AI Literacy & Creative Collaboration",
+    description:
+      "AI - bu raqib emas, hamkor. Farzandingiz AI bilan mas'uliyatli muloqot qilib, ijodiy fikrini kuchaytiradi va kelajak texnologiyalariga sog'lom munosabatni shakllantiradi.",
+    mediaLeft: true,
+    image: "/ai-literasing.jpg",
+    shape: "playB",
   },
 ];
 
-function CourseCard({
-  course,
-  onDetailsClick,
-  index,
-}: {
-  course: Course;
-  onDetailsClick: (courseTitle: string) => void;
-  index: number;
-}) {
+const shapePaths: Record<NonNullable<Module["shape"]>, string> = {
+  playA:
+    "M120,40 C210,10 430,20 520,120 C600,210 560,350 430,400 C300,450 150,420 90,320 C30,220 40,80 120,40 Z",
+  playB:
+    "M90,80 C170,10 420,10 520,120 C620,230 560,380 420,420 C280,460 120,420 70,300 C20,190 20,130 90,80 Z",
+  blob: "M140,40 C240,10 430,40 500,140 C570,240 540,350 430,410 C320,470 180,450 110,360 C40,270 40,110 140,40 Z",
+};
+
+function ModuleIllustration({ module }: { module: Module }) {
+  const shape = module.shape ?? "playA";
+  const clipId = `clip-${module.id}`;
+  const glowId = `glow-${module.id}`;
+  const path = shapePaths[shape];
+
   return (
-    <Card
-      className={`group relative overflow-hidden ${course.span.mobile} ${course.span.tablet} ${course.span.desktop} h-full bg-card border-border hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 cursor-pointer`}
-    >
-      {/* Gradient Background */}
-      <div
-        className={`absolute inset-0 bg-gradient-to-br ${course.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-      />
+    <div className="relative h-full w-full">
+      <svg
+        viewBox="0 0 480 480"
+        className="h-full w-full scale-[1.15] md:scale-[1.1]"
+        aria-hidden="true"
+        style={{ background: "transparent" }}
+      >
+        <defs>
+          {/* unique ids (assume you already generate them) */}
+          <clipPath id={clipId} clipPathUnits="userSpaceOnUse">
+            <path d="m452.3 154.4 8.5-47.6A75.6 75.6 0 0 0 373.2 19l-47.4 8.5c-16.7 3-34 .2-49-7.8l-1.1-.6c-22.3-12-49-12-71.4 0l-1.2.6c-15 8-32.2 10.8-48.9 7.8L106.7 19A75.6 75.6 0 0 0 19 106.7l8.5 47.5c3 16.7.3 34-7.8 49l-.6 1.1c-12 22.3-12 49 0 71.3l.6 1.3c8 15 10.8 32.2 7.8 48.9L19 373.3a75.6 75.6 0 0 0 87.7 87.7l47.5-8.5c16.7-3 34-.3 49 7.8l1.1.6c22.3 12 49 12 71.3 0l1.3-.6c15-8 32.2-10.8 48.9-7.8l47.5 8.5a75.6 75.6 0 0 0 87.7-87.7l-8.4-47.2c-3-16.9-.2-34.3 8-49.4a75.5 75.5 0 0 0 .3-71.6l-1-1.8c-8-15-10.7-32.2-7.6-48.9Z" />
+          </clipPath>
 
-      {/* Decorative Blob */}
-      <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-700" />
-      <div className="absolute -bottom-20 -left-20 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition-all duration-700" />
+          <linearGradient id={glowId} x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#dff5ff" />
+            <stop offset="50%" stopColor="#e9fbf3" />
+            <stop offset="100%" stopColor="#eef3ff" />
+          </linearGradient>
 
-      {/* Dotted Pattern (subtle) */}
-      <div
-        className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500"
-        style={{
-          backgroundImage: `radial-gradient(circle, currentColor 1px, transparent 1px)`,
-          backgroundSize: "20px 20px",
-        }}
-      />
+          <filter x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="14" />
+          </filter>
+        </defs>
 
-      <CardHeader className="relative z-10 p-6">
-        {/* Icon */}
-        <div className="mb-4">
-          <div className="w-16 h-16 rounded-2xl bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
-            <course.icon className="w-8 h-8 text-primary" />
-          </div>
-        </div>
+        {/* 🔹 Glow background (ONLY shape, no rectangle) */}
+        <path
+          d="m452.3 154.4 8.5-47.6A75.6 75.6 0 0 0 373.2 19l-47.4 8.5c-16.7 3-34 .2-49-7.8l-1.1-.6c-22.3-12-49-12-71.4 0l-1.2.6c-15 8-32.2 10.8-48.9 7.8L106.7 19A75.6 75.6 0 0 0 19 106.7l8.5 47.5c3 16.7.3 34-7.8 49l-.6 1.1c-12 22.3-12 49 0 71.3l.6 1.3c8 15 10.8 32.2 7.8 48.9L19 373.3a75.6 75.6 0 0 0 87.7 87.7l47.5-8.5c16.7-3 34-.3 49 7.8l1.1.6c22.3 12 49 12 71.3 0l1.3-.6c15-8 32.2-10.8 48.9-7.8l47.5 8.5a75.6 75.6 0 0 0 87.7-87.7l-8.4-47.2c-3-16.9-.2-34.3 8-49.4a75.5 75.5 0 0 0 .3-71.6l-1-1.8c-8-15-10.7-32.2-7.6-48.9Z"
+          fill={`url(#${glowId})`}
+          filter={`url(#)`}
+          opacity="0.95"
+        />
 
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-3">
-          {course.tags.map((tag, index) => (
-            <Badge
-              key={index}
-              variant="secondary"
-              className="text-xs bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors"
-            >
-              {tag}
-            </Badge>
-          ))}
-        </div>
-
-        <CardTitle className="text-2xl md:text-3xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
-          {course.title}
-        </CardTitle>
-      </CardHeader>
-
-      <CardContent className="relative z-10 p-6 pt-0 flex flex-col flex-1">
-        <p className="text-muted-foreground mb-6 leading-relaxed flex-grow">
-          {course.shortDescription}
-        </p>
-
-        {/* Stats (for larger cards) */}
-        {course.size === "large" && (
-          <div className="grid grid-cols-2 gap-4 mb-6 text-sm">
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Clock className="w-4 h-4 text-primary" />
-              <span>{course.duration}</span>
-            </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Users className="w-4 h-4 text-primary" />
-              <span>{course.students}</span>
-            </div>
-          </div>
-        )}
-
-        {/* CTA Button */}
-        <Button
-          onClick={(e) => {
-            e.stopPropagation();
-            onDetailsClick(course.title);
-          }}
-          className="w-full bg-primary py-6 text-primary-foreground hover:bg-primary/90 group/button transition-all duration-300 hover:shadow-lg hover:shadow-primary/30"
-        >
-          <span className="mr-2">Batafsil</span>
-          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/button:translate-x-1" />
-        </Button>
-      </CardContent>
-
-      {/* Glow effect on hover */}
-      <div className="absolute inset-0 rounded-xl bg-primary/0 group-hover:bg-primary/5 transition-all duration-500 pointer-events-none" />
-    </Card>
+        {/* 🔹 Image clipped perfectly to shape */}
+        <g clipPath={`url(#${clipId})`}>
+          <image
+            href={module.image}
+            x="0"
+            y="0"
+            width="480"
+            height="480"
+            preserveAspectRatio="xMidYMid slice"
+          />
+        </g>
+      </svg>
+    </div>
   );
 }
 
-function CourseModal({
-  course,
-  isOpen,
-  onClose,
-}: {
-  course: Course | null;
-  isOpen: boolean;
-  onClose: () => void;
-}) {
-  if (!course) return null;
-
-  return <CourseDialog isOpen={isOpen} onClose={onClose} course={course} />;
-}
-
 export function CoursesSection() {
-  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
 
-  const handleDetailsClick = (courseTitle: string) => {
-    const course = courses.find((c) => c.title === courseTitle);
-    if (course) {
-      setSelectedCourse(course);
-      setIsModalOpen(true);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const update = () => setIsDesktop(mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener("change", update);
+    return () => mediaQuery.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) {
+      return;
     }
-  };
+
+    let rafId = 0;
+    const handleScroll = () => {
+      if (rafId) {
+        return;
+      }
+      rafId = window.requestAnimationFrame(() => {
+        rafId = 0;
+        const el = sectionRef.current;
+        if (!el) {
+          return;
+        }
+        const rect = el.getBoundingClientRect();
+        const top = rect.top + window.scrollY;
+        const height = rect.height;
+        const vh = window.innerHeight;
+        const progress = Math.min(
+          1,
+          Math.max(0, (window.scrollY - top) / (height - vh)),
+        );
+        const nextIndex = Math.min(
+          modules.length - 1,
+          Math.floor(progress * modules.length),
+        );
+        setActiveIndex(nextIndex);
+      });
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
+    };
+  }, [isDesktop]);
+
+  const activeModule = useMemo(() => modules[activeIndex], [activeIndex]);
 
   return (
     <section
-      id="courses"
-      className="relative py-20 md:py-28 bg-background overflow-hidden"
+      ref={sectionRef}
+      className="relative bg-background py-16 md:py-24 lg:py-28"
+      aria-labelledby="courses-title"
     >
-      {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-      <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-
-      <div className="container mx-auto px-4 lg:px-12 relative z-10">
-        {/* Section Header */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
-          variants={titleReveal}
-          className="text-center mb-16 max-w-3xl mx-auto"
-        >
+      <Container>
+        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+          <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">
+            Module-based education
+          </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
-            Bizning{" "}
-            <span className="text-primary bg-gradient-to-r from-primary via-cyan-500 to-primary bg-clip-text text-transparent">
-              Maqsadimiz
+            <span className="text-primary bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent ">
+              {" "}
+              Farzandingizning fikirlashi o'zgaradigan yo'l
             </span>
           </h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewportConfig}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-lg md:text-xl text-muted-foreground leading-relaxed"
-          >
-            Bu shunchaki kurslar emas — bu o‘sish yo‘li. Noldan boshlanib,
-            ishonchli bilim va real ko‘nikmalar bilan yakunlanadigan safar.
-            Keling, bilim orqali kelajakni birga yaratamiz.
-          </motion.p>
-        </motion.div>
+          <p className="mt-4 text-base md:text-lg text-muted-foreground">
+            Bu kurslar texnologiya ro'yxati emas. Bu - mantiq, ijod va AI bilan
+            sog'lom hamkorlikni shakllantiradigan 3 ta katta modul.
+          </p>
+        </div>
 
-        {/* Bento Grid */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
-          variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-auto gap-6"
-        >
-          {courses.map((course, index) => (
+        {/* Desktop: scroll story */}
+        <div className="hidden md:block">
+          <div className="relative h-[320vh]">
+            <div className="sticky top-20 h-[calc(100vh-5rem)] flex items-center">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeModule.id}
+                  className="grid w-full items-center gap-12 lg:grid-cols-2"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.45, ease: "easeOut" }}
+                >
+                  <motion.div
+                    className={`relative h-[320px] w-full sm:h-[360px] lg:h-[420px] ${
+                      activeModule.mediaLeft ? "lg:order-1" : "lg:order-2"
+                    }`}
+                    initial={{ scale: 0.98, opacity: 0 }}
+                    animate={{ scale: 1.02, opacity: 1 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                  >
+                    <motion.div
+                      className="absolute inset-0"
+                      animate={{ y: [0, -8, 0] }}
+                      transition={{
+                        duration: 7,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      <ModuleIllustration module={activeModule} />
+                    </motion.div>
+                  </motion.div>
+
+                  <motion.div
+                    className={`${
+                      activeModule.mediaLeft ? "lg:order-2" : "lg:order-1"
+                    }`}
+                    initial={{
+                      opacity: 0,
+                      x: activeModule.mediaLeft ? 24 : -24,
+                    }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.45, ease: "easeOut" }}
+                  >
+                    <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">
+                      Modul {activeIndex + 1}
+                    </p>
+                    <h3 className="mt-3 text-2xl lg:text-4xl font-semibold text-blue-600">
+                      {activeModule.title}
+                    </h3>
+                    <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+                      {activeModule.description}
+                    </p>
+                  </motion.div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile: stacked modules */}
+        <div className="md:hidden space-y-12">
+          {modules.map((module, index) => (
             <motion.div
-              key={course.title}
-              variants={staggerItem}
-              className={
-                course.span.mobile +
-                " " +
-                course.span.tablet +
-                " " +
-                course.span.desktop
-              }
+              key={module.id}
+              className="grid gap-8"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.4 }}
             >
-              <CourseCard
-                course={course}
-                onDetailsClick={handleDetailsClick}
-                index={index}
-              />
+              <div className="relative h-[260px] w-full">
+                <motion.div
+                  className="absolute inset-0"
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <ModuleIllustration module={module} />
+                </motion.div>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  Modul {index + 1}
+                </p>
+                <h3 className="mt-2 text-xl font-semibold text-foreground">
+                  {module.title}
+                </h3>
+                <p className="mt-3 text-base text-muted-foreground">
+                  {module.description}
+                </p>
+              </div>
             </motion.div>
           ))}
-        </motion.div>
-      </div>
-
-      {/* Course Details Modal */}
-      <CourseModal
-        course={selectedCourse}
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+        </div>
+      </Container>
     </section>
   );
 }

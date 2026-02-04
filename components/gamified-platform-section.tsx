@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Container } from "@/components/ui/container";
 import { Coins, Trophy, Gamepad2, Star, Target, Zap } from "lucide-react";
 
 const features = [
@@ -11,7 +12,7 @@ const features = [
 export function GamifiedPlatformSection() {
   return (
     <section id="platform" className="py-20 md:py-28 bg-primary">
-      <div className="container mx-auto px-4">
+      <Container>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="text-primary-foreground">
@@ -128,7 +129,7 @@ export function GamifiedPlatformSection() {
             <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary-foreground/10 rounded-full blur-2xl" />
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

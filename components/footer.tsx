@@ -1,13 +1,13 @@
+import { Container } from "@/components/ui/container";
+
 export function Footer() {
   return (
     <footer className="bg-primary py-12">
-      <div className="container mx-auto px-4">
+      <Container>
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <span className="text-2xl font-bold text-primary-foreground">
-              NAVI
-            </span>
+            <img className="w-[120px]" src="/white-logo.png" alt="logo" />
           </div>
 
           {/* License */}
@@ -46,7 +46,7 @@ export function Footer() {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

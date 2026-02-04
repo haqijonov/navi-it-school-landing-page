@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import type React from "react";
 import { Button } from "@/components/ui/button";
+import { Container } from "@/components/ui/container";
 import { Menu, X, Phone } from "lucide-react";
 
 export function Header() {
@@ -39,27 +40,21 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center transition-all duration-500 ${
           isScrolled ? "py-2" : "py-4 md:py-6"
         }`}
       >
-        {/* Background with gradient and blur */}
-        <div className={`absolute inset-0 transition-all duration-500 `} />
-
-        {/* Decorative gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-50" />
-
         {/* Container */}
-        <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+        <Container className="relative z-10">
           <div
-            className={`flex items-center justify-between transition-all lg:border py-2 px-4 rounded-full border-primary  duration-500 ${
+            className={`flex items-center justify-between rounded-full border border-white/40 bg-background/70 px-4 py-2 shadow-sm backdrop-blur-xl transition-all duration-500 dark:border-white/10 ${
               isScrolled ? "max-w-7xl mx-auto" : ""
             }`}
           >
             {/* Logo */}
             <a
               href="#"
-              className={`font-bold text-foreground transition-all duration-500 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg ${
+              className={`font-bold text-foreground transition-all duration-500 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xl ${
                 isScrolled ? "text-xl" : "text-2xl md:text-3xl"
               }`}
               aria-label="NAVI - Bosh sahifa"
@@ -72,7 +67,7 @@ export function Header() {
 
             {/* Desktop Navigation */}
             <nav
-              className="hidden  lg:flex items-center gap-8"
+              className="hidden lg:flex items-center gap-4"
               aria-label="Asosiy navigatsiya"
             >
               {navLinks.map((link) => (
@@ -118,7 +113,7 @@ export function Header() {
               )}
             </button>
           </div>
-        </div>
+        </Container>
       </header>
 
       {/* Mobile Menu */}
@@ -164,25 +159,14 @@ function NavLink({
   return (
     <a
       href={href}
-      className={`relative font-medium transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg px-2 py-1 ${
+      className={`relative font-medium transition-all duration-200 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-full px-3 py-1 ${
         isActive
-          ? "text-primary"
-          : "text-muted-foreground hover:text-foreground"
+          ? "text-primary bg-primary/10"
+          : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
       }`}
     >
       {children}
-      {/* Animated underline */}
-      <span
-        className={`absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ${
-          isActive ? "w-full" : "w-0 group-hover:w-full"
-        }`}
-      />
-      {/* Dot indicator */}
-      <span
-        className={`absolute -top-1 -right-1 w-2 h-2 rounded-full bg-primary transition-all duration-300 ${
-          isActive ? "opacity-100 scale-100" : "opacity-0 scale-0"
-        }`}
-      />
+      {/* Minimal active pill indicator is handled by background; remove extra dots/lines for a calmer look */}
     </a>
   );
 }

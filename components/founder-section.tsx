@@ -1,7 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Rocket, BookOpen, Lightbulb, Heart, Shield, Award } from "lucide-react";
+import {
+  Rocket,
+  BookOpen,
+  Lightbulb,
+  Heart,
+  Shield,
+  Award,
+} from "lucide-react";
+import { Container } from "@/components/ui/container";
 
 const values = [
   {
@@ -32,7 +40,7 @@ export function FounderSection() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {
@@ -55,13 +63,12 @@ export function FounderSection() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
 
-      <div className="container mx-auto px-4 md:px-12 relative z-10">
+      <Container className="relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
-            NAVI{" "}
-            <span className="text-primary bg-gradient-to-r from-primary via-cyan-500 to-primary bg-clip-text text-transparent">
-              Asoschisi
+            <span className="text-primary bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent">
+              NAVI Asoschisi
             </span>
           </h2>
         </div>
@@ -208,8 +215,7 @@ export function FounderSection() {
             </div>
           </div>
         </div>
-      </div>
-
+      </Container>
     </section>
   );
 }
