@@ -113,7 +113,7 @@ export function CircularVideoPlaceholder({
                 }}
               >
                 <textPath href="#circle-path" startOffset="0%">
-                  NAVI • MAQSAD • YO'L • KELAJAK • NAVI • MAQSAD • YO'L
+                  Qiziqarli Ta'lim Orqali Yoshlarni Kelajakka Tayyorlaymiz!
                 </textPath>
               </text>
             </svg>

@@ -23,10 +23,12 @@ export function FloatingContactButton() {
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    
+
     // Try to find the first contact section
-    const contactSection = document.querySelector("#contact-1, #contact, [id^='contact']");
-    
+    const contactSection = document.querySelector(
+      "#contact-1, #contact, [id^='contact']",
+    );
+
     if (contactSection) {
       // Smooth scroll to the contact section
       contactSection.scrollIntoView({
@@ -63,8 +65,8 @@ export function FloatingContactButton() {
           WebkitBackdropFilter: "blur(8px) saturate(180%)",
         }}
       >
-        <MessageCircle 
-          className="w-6 h-6 sm:w-7 sm:h-7 transition-transform duration-300 group-hover:rotate-12 group-active:rotate-0" 
+        <MessageCircle
+          className="w-6 h-6 sm:w-7 sm:h-7 transition-transform duration-300 group-hover:rotate-12 group-active:rotate-0"
           aria-hidden="true"
         />
       </button>

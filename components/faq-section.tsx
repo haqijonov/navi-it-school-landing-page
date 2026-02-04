@@ -13,32 +13,34 @@ interface FAQItem {
 const faqs: FAQItem[] = [
   {
     question: "Darslar qanday formatda o'tadi?",
-    answer: "Jonli onlayn dars + loyiha. Har bola bilan individual yondashuv.",
+    answer:
+      "Jonli onlayn formatda o'tadi. Har bir bola bilan individual yondashuv.",
     position: "left-0 top-6",
     tail: "left-[70%] top-full rotate-12",
   },
   {
     question: "Farzandimga qiyin bo'lib qolmaydimi?",
-    answer: "Bosqichma-bosqich, yumshoq ritmda. Ishonch asta-sekin oshadi.",
+    answer: "Yo'q, darslarimiz bosqichma-bosqich, oson usulda o'tiladi.",
     position: "right-0 top-16",
     tail: "right-[65%] top-full -rotate-12",
   },
   {
     question: "Natija nimada ko'rinadi?",
-    answer: "Fikrlash, mustaqil yechim va o'ziga ishonch kuchayadi.",
+    answer:
+      "Bolaning fikrlashida, mustaqil qarorlarida va bajargan loyihalarida.",
     position: "left-6 bottom-12",
     tail: "left-[60%] -top-2 rotate-6",
   },
   {
-    question: "AI bolaga qanday foyda beradi?",
+    question: "Online darslar natija beradimi?",
     answer:
-      "AI - hamkor. To'g'ri savol berish va mas'uliyatli ishlashni o'rgatadi.",
+      "Ha, online natija beradi. Gap formatda emas, ta'lim metodi va texnalogiyasida.",
     position: "right-8 bottom-4",
     tail: "right-[60%] -top-2 -rotate-6",
   },
   {
     question: "Qachon boshlash mumkin?",
-    answer: "Hohlagan paytda. Biz mos guruh va jadvalni topib beramiz.",
+    answer: "Hohlagan vaqtda. Biz mos guruh va jadvalni topib beramiz.",
     position: "left-1/2 -translate-x-1/2 top-[84%]",
     tail: "left-1/2 -top-2 -translate-x-1/2",
   },
@@ -256,9 +258,9 @@ export function FAQSection() {
         </div>
 
         <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">Boshqa savolingiz bormi?</p>
+          <p className="text-muted-foreground mb-4">Savolingiz bormi?</p>
           <a
-            href="#contact-2"
+            href="#contact"
             className="inline-block px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
             Biz bilan bog'laning

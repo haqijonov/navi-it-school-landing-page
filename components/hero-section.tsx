@@ -3,6 +3,7 @@
 import { Trophy, Rocket, Calendar, Clock, User, Heart } from "lucide-react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { HeroTitle } from "./hero-title";
 
@@ -31,6 +32,20 @@ const features = [
 ];
 
 export function HeroSection() {
+  const handlePrimaryCtaClick = () => {
+    const contactSection = document.querySelector<HTMLElement>("#contact");
+    if (!contactSection) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    contactSection.scrollIntoView({
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <section
       className="relative bg-background py-16 md:py-24 lg:py-28"
@@ -45,15 +60,53 @@ export function HeroSection() {
           </span>
         </div>
         <div className="grid gap-10 lg:grid-cols-2 lg:grid lg:items-center mx-auto">
-          {/* Left: Title & badge */}
-          <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-6">
+          {/* Left: Title + subtitle + key result + CTA */}
+          <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-5 md:gap-6">
             <div className="w-full" id="hero-title">
-              <HeroTitle />
+              <HeroTitle className="mb-0 text-center lg:text-left" />
+            </div>
+
+            <p className="max-w-[38ch] text-sm md:text-base lg:text-lg text-foreground/75 leading-relaxed mx-auto lg:mx-0">
+              <span className="block">
+                Sun&apos;iy intellekt dunyoni o&apos;zgartiryapti.
+              </span>
+              <span className="block">
+                Oddiy ta'lim va oddiy to&apos;garaklar esa — yo&apos;q.
+              </span>
+              <span className="mt-4 block">
+                NAVI bolalarni IT ni o&apos;rganishga emas,
+              </span>
+              <span className="block">
+                kelajakda o&apos;z o&apos;rnini topa oladigan inson
+                bo&apos;lishga tayyorlaydi.
+              </span>
+            </p>
+
+            <div
+              role="note"
+              className="max-w-[38ch] rounded-2xl border border-primary/25 bg-gradient-to-r from-primary/15 to-primary/5 px-4 py-3 text-left shadow-sm mx-auto lg:mx-0"
+            >
+              <p className="flex items-start gap-2 text-sm md:text-base font-semibold text-foreground/90 leading-relaxed">
+                <span>
+                  1 oy ichida — farzandingiz birinchi IT loyihasini yaratadi.
+                </span>
+              </p>
+            </div>
+
+            <div className="w-full max-w-[20rem] md:max-w-[22rem] mx-auto lg:mx-0">
+              <Button
+                type="button"
+                onClick={handlePrimaryCtaClick}
+                aria-label="Contact bo'limiga o'tish"
+                className="w-full h-auto px-8 py-4 text-base font-bold bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_16px_35px_rgba(0,67,255,0.28)] hover:scale-[1.02] transition-all duration-300 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                BEPUL darsga yozilish
+              </Button>
             </div>
           </div>
 
           {/* Right: Media */}
-          <div className="order-1 lg:order-2 w-full mx-auto lg:mx-0">
+          <div className="order-1 lg:order-2  mx-auto lg:mx-0">
             <motion.div
               className="relative aspect-[4/3] w-full"
               initial={{ y: 0 }}

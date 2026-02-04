@@ -16,27 +16,27 @@ type Module = {
 const modules: Module[] = [
   {
     id: "module-1",
-    title: "Programming & Problem Solving",
+    title: " Dasturchilar kabi fikrlashni boshlaydi",
     description:
-      "Farzandingiz kod yozishni emas, muammoni yechishni o'rganadi. Har bir loyiha mantiq, sabr va tizimli fikrlashni mustahkamlaydi - natijada u o'ziga ishonch bilan yechim topa oladi.",
+      "Farzandingiz dasturlash tillarini o'rganibgina qolmay, muammoni yechishni, mantiqiy va tanqidiy fikrlashni o'rganadi. Natijada u o'z hayotidagi muammolarga mustaqil yechim topa oladi.",
     mediaLeft: true,
     image: "/programming-online.jpg",
     shape: "playA",
   },
   {
     id: "module-2",
-    title: "Logical & Critical Thinking",
+    title: "Kelajakdagi zarur bo'ladigan ko'nikmalar",
     description:
-      "Biz bolalarga savol berishni, fikrni tahlil qilishni va dalil bilan qaror qilishni o'rgatamiz. Bu modul tafakkurni aniq, xotirjam va mustaqil qilishga xizmat qiladi.",
+      "Biz bolalarga to'g'ri savol berishni, fikrlarni tahlil qilishni, tanqidiy fikrlashni, qilgan loyhalarini taqdimot qilishni va dalillar asosida qaror qabul qilishni o'rgatamiz. Bu harakatlar bola fikrlashini aniq, kuchli va mustaqil qilishga xizmat qiladi.",
     mediaLeft: false,
     image: "/thinking.jpg",
     shape: "blob",
   },
   {
     id: "module-3",
-    title: "AI Literacy & Creative Collaboration",
+    title: "Sun'iy intelekt bilan to'gri ishlash",
     description:
-      "AI - bu raqib emas, hamkor. Farzandingiz AI bilan mas'uliyatli muloqot qilib, ijodiy fikrini kuchaytiradi va kelajak texnologiyalariga sog'lom munosabatni shakllantiradi.",
+      "Sun'iy intelekt - bu dushman emas, balki hamkordir. Farzandingiz sun'iy intelekt bilan to'g'ri muloqot qilib, ijodiy fikrini kuchaytiradi va kelajak texnologiyalariga sog'lom munosabatni shakllantiradi.",
     mediaLeft: true,
     image: "/ai-literasing.jpg",
     shape: "playB",
@@ -173,18 +173,16 @@ export function CoursesSection() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-          <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">
-            Module-based education
-          </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
             <span className="text-primary bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent ">
               {" "}
-              Farzandingizning fikirlashi o'zgaradigan yo'l
+              Farzandingizning fikirlashini o'zgartiradigan ta'lim
             </span>
           </h2>
           <p className="mt-4 text-base md:text-lg text-muted-foreground">
-            Bu kurslar texnologiya ro'yxati emas. Bu - mantiq, ijod va AI bilan
-            sog'lom hamkorlikni shakllantiradigan 3 ta katta modul.
+            Bizdagi ta'lim shunchaki texnologiyalar ro'yxati emas. Balki -
+            mantiqiy fikrlash, ijodkorlik qobilyati va sun'iy intelekt bilan
+            sog'lom munosabatni shakllantiradigan ta'limdir.
           </p>
         </div>
 
@@ -233,9 +231,6 @@ export function CoursesSection() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.45, ease: "easeOut" }}
                   >
-                    <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">
-                      Modul {activeIndex + 1}
-                    </p>
                     <h3 className="mt-3 text-2xl lg:text-4xl font-semibold text-blue-600">
                       {activeModule.title}
                     </h3>
@@ -275,7 +270,7 @@ export function CoursesSection() {
               </div>
               <div>
                 <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                  Modul {index + 1}
+                  Modullll {index + 1}
                 </p>
                 <h3 className="mt-2 text-xl font-semibold text-foreground">
                   {module.title}

@@ -1,5 +1,7 @@
 import { HeroSection } from "@/components/hero-section";
+import { ParentConcernsSection } from "@/components/parent-concerns-section";
 import { CoursesSection } from "@/components/courses-section";
+import { OutcomeSection } from "@/components/outcome-section";
 import { ContactSection } from "@/components/contact-section";
 import { GamifiedPlatformSection } from "@/components/gamified-platform-section";
 import { WhyNaviSection } from "@/components/why-navi-section";
@@ -14,12 +16,14 @@ export default function Home() {
     <main className="min-h-screen">
       <Header />
       <HeroSection />
+      <ParentConcernsSection />
       <CoursesSection />
+      <OutcomeSection />
       {/* <ContactSection id="contact-1" /> */}
       {/* <GamifiedPlatformSection /> */}
       <WhyNaviSection />
       <FAQSection />
-      <ContactSection id="contact-2" />
+      <ContactSection id="contact" />
       <TeachersSection />
       <FounderSection />
       {/* <ContactSection id="contact-3" /> */}

@@ -119,7 +119,7 @@ function useTypingEffect({
 export function HeroTitle({ className = "" }: HeroTitleProps) {
   const typingTexts = [
     "Bolalar va o'smirlar uchun",
-    " Kelajakni biz bilan yarating",
+    " Bugun farzandingizni kelajakka tayyorlamasangiz — ertaga kech bo‘ladi!",
   ];
 
   const { displayText, showCursor, isTyping, isDone } = useTypingEffect({
@@ -133,7 +133,7 @@ export function HeroTitle({ className = "" }: HeroTitleProps) {
 
   return (
     <h1
-      className={`text-4xl md:text-6xl lg:text-7xl font-extrabold text-foreground mb-6 text-center leading-tight ${className}`}
+      className={`text-4xl md:text-6xl lg:text-4xl font-extrabold text-foreground mb-6 text-center leading-tight ${className}`}
     >
       {/* Static NAVI
       <motion.span

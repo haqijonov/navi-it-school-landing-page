@@ -92,7 +92,7 @@ export function Header() {
               </a>
 
               {/* CTA Button */}
-              <a href="#contact-2" aria-label="Bog'lanish">
+              <a href="#contact" aria-label="Bog'lanish">
                 <Button className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-6 rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                   Bog'laning
                 </Button>
@@ -251,7 +251,7 @@ function MobileMenu({
           </a>
 
           {/* CTA Button */}
-          <a href="#contact-2" onClick={onClose} className="mt-4">
+          <a href="#contact" onClick={onClose} className="mt-4">
             <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-6 rounded-full font-semibold shadow-lg">
               Bog'laning
             </Button>

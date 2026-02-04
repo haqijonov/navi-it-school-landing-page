@@ -18,13 +18,13 @@ const benefits = [
     icon: Shield,
     title: "Xavfsiz va ishonchli muhit",
     description:
-      "Bizning platformamizda har bir o'quvchi xavfsiz va qulay sharoitda o'rganadi. Professional murabbiylar va yaxshi tayyorlangan dasturlar bilan.",
+      "Bizning platformamizda har bir o'quvchi xavfsiz va qulay sharoitda ta'lim oladi.  Dasturchilar va murabbiylar bilan jonli darslar bo'ladi.",
   },
   {
     icon: Star,
-    title: "Yuqori sifatli ta'lim",
+    title: "Qiziqarli ta'lim",
     description:
-      "Eng zamonaviy metodlar va texnologiyalar bilan ta'minlangan dasturlar. Har bir dars qiziqarli va amaliy bilimlar bilan to'ldirilgan.",
+      "Eng zamonaviy metodlar va texnologiyalar bilan ta'minlangan dastur. Har bir dars qiziqarli va amaliy bilimlar bilan to'ldirilgan.",
   },
   {
     icon: Heart,
@@ -65,8 +65,7 @@ export function WhyNaviSection() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-lg md:text-xl text-muted-foreground leading-relaxed"
           >
-            Nega ota-onalar aynan NAVI ni tanlashadi? Keling, bizning
-            o'quvchilarimizning muvaffaqiyat hikoyalarini bilib oling.
+            Nega ota-onalar aynan NAVI ni tanlashadi?
           </motion.p>
         </motion.div>
 
@@ -89,7 +88,7 @@ export function WhyNaviSection() {
                 className="text-xl md:text-2xl text-foreground font-semibold leading-relaxed"
               >
                 Har bir bola kelajakda muvaffaqiyatli bo'lishi mumkin — biz
-                ularga yo'l ko'rsatamiz
+                ularga to'g'ri yo'l ko'rsatamiz
               </motion.p>
               <motion.div
                 initial="hidden"
@@ -131,15 +130,15 @@ export function WhyNaviSection() {
               <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-primary" />
-                  <span>500+ o'quvchilar</span>
+                  <span>2500+ o'quvchilar</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-primary" />
-                  <span>7+ yillik tajriba</span>
+                  <span>5+ yillik tajriba</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-primary" />
-                  <span>Professional murabbiylar</span>
+                  <span>Professional yondashuv</span>
                 </div>
               </div>
             </motion.div>

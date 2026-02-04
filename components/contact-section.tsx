@@ -3,12 +3,22 @@
 import type React from "react";
 
 import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
-import { Send, CheckCircle } from "lucide-react";
+import {
+  Send,
+  CheckCircle,
+  Eye,
+  Brain,
+  CheckCircle2,
+  Clock,
+  FileWarning,
+  MailWarning,
+  Clock1,
+} from "lucide-react";
 
 interface ContactSectionProps {
   id: string;
@@ -16,10 +26,31 @@ interface ContactSectionProps {
 
 export function ContactSection({ id }: ContactSectionProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const shouldReduceMotion = useReducedMotion() ?? false;
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
+    hasComputer: false,
   });
+
+  const trustSteps = [
+    {
+      icon: Eye,
+      text: "Dars jarayonini kuzatasiz",
+    },
+    {
+      icon: Brain,
+      text: "Farzandingiz qanday fikrlashini ko'rasiz",
+    },
+    {
+      icon: CheckCircle2,
+      text: "Qarorni ongli ravishda qabul qilasiz",
+    },
+    {
+      icon: Clock,
+      text: "Kichik guruhlar sababli joylar soni cheklangan",
+    },
+  ] as const;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,7 +58,7 @@ export function ContactSection({ id }: ContactSectionProps) {
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
-      setFormData({ name: "", phone: "" });
+      setFormData({ name: "", phone: "", hasComputer: false });
     }, 3000);
   };
 
@@ -37,17 +68,13 @@ export function ContactSection({ id }: ContactSectionProps) {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] items-center">
           {/* Left column: title, intro, form */}
           <div className="max-w-2xl w-full mx-auto">
-            <Card className="bg-card border-border shadow-lg">
+            <Card className="bg-transparent shadow-none">
               <CardHeader className="text-center">
                 <CardTitle className="text-3xl md:text-4xl font-bold text-card-foreground mb-2">
                   <span className="text-primary bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent">
-                    BEPUL Konsultatsiya
+                    Hoziroq BEPUL Darsga Yoziling
                   </span>
                 </CardTitle>
-                <p className="text-muted-foreground">
-                  Telefon raqamingizni qoldiring — biz siz bilan tez orada
-                  bog‘lanamiz
-                </p>
               </CardHeader>
               <CardContent>
                 {isSubmitted ? (
@@ -63,16 +90,10 @@ export function ContactSection({ id }: ContactSectionProps) {
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                      <label
-                        htmlFor={`name-${id}`}
-                        className="block text-sm font-medium text-card-foreground mb-2"
-                      >
-                        Ismingiz
-                      </label>
                       <Input
                         id={`name-${id}`}
                         type="text"
-                        placeholder="ismingiz"
+                        placeholder="Ism"
                         value={formData.name}
                         onChange={(e) =>
                           setFormData({ ...formData, name: e.target.value })
@@ -81,17 +102,12 @@ export function ContactSection({ id }: ContactSectionProps) {
                         className="bg-input border-border"
                       />
                     </div>
+
                     <div>
-                      <label
-                        htmlFor={`email-${id}`}
-                        className="block text-sm font-medium text-card-foreground mb-2"
-                      >
-                        Telefon raqamingiz
-                      </label>
                       <Input
                         id={`phone-${id}`}
                         type="text"
-                        placeholder="telefon raqamingiz"
+                        placeholder="Telefon raqam"
                         value={formData.phone}
                         onChange={(e) =>
                           setFormData({ ...formData, phone: e.target.value })
@@ -99,6 +115,41 @@ export function ContactSection({ id }: ContactSectionProps) {
                         required
                         className="bg-input border-border"
                       />
+                    </div>
+
+                    {/* ✅ Radio qismi */}
+                    <div className="space-y-2">
+                      <p className="text-sm font-medium text-card-foreground">
+                        Farzandingizda kompyuter bormi?
+                      </p>
+
+                      <div className="flex items-center gap-6">
+                        <label className="flex items-center gap-2 cursor-pointer text-sm">
+                          <input
+                            type="radio"
+                            name={`hasComputer-${id}`}
+                            checked={formData.hasComputer === true}
+                            onChange={() =>
+                              setFormData({ ...formData, hasComputer: true })
+                            }
+                            className="h-4 w-4 text-primary focus:ring-primary"
+                          />
+                          Ha
+                        </label>
+
+                        <label className="flex items-center gap-2 cursor-pointer text-sm">
+                          <input
+                            type="radio"
+                            name={`hasComputer-${id}`}
+                            checked={formData.hasComputer === false}
+                            onChange={() =>
+                              setFormData({ ...formData, hasComputer: false })
+                            }
+                            className="h-4 w-4 text-primary focus:ring-primary"
+                          />
+                          Yo‘q
+                        </label>
+                      </div>
                     </div>
 
                     <Button
@@ -114,44 +165,42 @@ export function ContactSection({ id }: ContactSectionProps) {
             </Card>
           </div>
 
-          {/* Right column: supportive illustration */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="contact-illustration-float w-full max-w-xs sm:max-w-sm lg:max-w-md">
-              <div className="aspect-[3/3] w-full overflow-hidden rounded-3xl ">
-                <img
-                  src="/Call center-cuate.svg"
-                  alt="Aloqa va qo'llab-quvvatlash illyustratsiyasi"
-                  className="h-full w-full object-contain"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </div>
+          {/* Right column: trust / reassurance block */}
+          <motion.aside
+            aria-labelledby={`contact-trust-title-${id}`}
+            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: shouldReduceMotion ? 0.2 : 0.45 }}
+            className="w-full max-w-xl mx-auto lg:mx-0 rounded-4xl bg-gradient-to-r from-primary/[0.08] via-background to-background   p-6 md:p-7 lg:p-8"
+          >
+            <h3
+              id={`contact-trust-title-${id}`}
+              className="mt-2 text-xl md:text-2xl font-semibold text-foreground"
+            >
+              Hammasi sizning nazoratingizda
+            </h3>
+
+            <ul className="mt-6 space-y-3.5">
+              {trustSteps.map((step, index) => (
+                <li
+                  key={step.text}
+                  className="group flex items-start gap-3 rounded-2xl px-3 py-3 transition-colors duration-200 hover:bg-primary/[0.07]"
+                >
+                  <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary/15 text-primary">
+                    <step.icon className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <p className="mt-0.5 text-sm md:text-base font-medium text-foreground/95 leading-relaxed">
+                      {step.text}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </motion.aside>
         </div>
       </Container>
-
-      {/* Subtle float animation with reduced-motion support */}
-      <style jsx global>{`
-        @keyframes contactFloat {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-        }
-
-        .contact-illustration-float {
-          animation: contactFloat 10s ease-in-out infinite;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .contact-illustration-float {
-            animation: none !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

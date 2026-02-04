@@ -125,16 +125,6 @@ export function TeachersSection() {
               Ustozlarimiz bilan tanishing
             </span>
           </h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewportConfig}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-lg md:text-xl text-muted-foreground leading-relaxed"
-          >
-            Farzandlarimizni kelajakka tayorlashda va eng zamonaviy
-            texnalogiyalarni o'rgatishda mutaxasislarimiz
-          </motion.p>
         </motion.div>
 
         {/* Horizontal Scroll Container */}
@@ -216,14 +206,6 @@ export function TeachersSection() {
         </div>
 
         {/* Helper Text */}
-        <p className="text-center text-sm text-muted-foreground mt-8">
-          <span className="hidden md:inline">
-            Chapga/o'ngga surib barcha ustozlarni ko'ring
-          </span>
-          <span className="md:hidden">
-            Chapga/o'ngga surib barcha ustozlarni ko'ring
-          </span>
-        </p>
       </Container>
     </section>
   );

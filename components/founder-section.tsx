@@ -205,11 +205,10 @@ export function FounderSection() {
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex items-center gap-2">
                   <Award className="w-4 h-4 text-primary" />
-                  <span>MARS IT Asoschisi</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Award className="w-4 h-4 text-primary" />
-                  <span>Get Coffee Asoschisi</span>
+                  <span>
+                    MARS IT - O'zbekistondagi eng yirik o'smirlar uchun
+                    mo'ljallangan o'quv markaz asoschisi
+                  </span>
                 </li>
               </ul>
             </div>
