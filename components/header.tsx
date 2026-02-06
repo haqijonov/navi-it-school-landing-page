@@ -16,7 +16,7 @@ export function Header() {
     { href: "#teachers", label: "Ustozlarimiz" },
   ];
 
-  const phoneNumber = "+998 90 166 61 13";
+  const phoneNumber = "+998 90 128 09 90";
 
   // Scroll detection
   useEffect(() => {
@@ -46,9 +46,7 @@ export function Header() {
       >
         {/* Container */}
         <Container className="relative z-10">
-          <div
-            className="flex w-full max-w-full items-center justify-between rounded-full border border-white/40 bg-background/70 px-4 py-2 shadow-sm backdrop-blur-xl transition-all duration-500 dark:border-white/10"
-          >
+          <div className="flex w-full max-w-full items-center justify-between rounded-full border border-white/40 bg-background/70 px-4 py-2 shadow-sm backdrop-blur-xl transition-all duration-500 dark:border-white/10">
             {/* Logo */}
             <a
               href="#"

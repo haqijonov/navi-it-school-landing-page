@@ -263,7 +263,7 @@ export function FAQSection() {
             href="#contact"
             className="inline-block px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
-            Biz bilan bog'laning
+            BEPUL darsga yozilish
           </a>
         </div>
       </Container>

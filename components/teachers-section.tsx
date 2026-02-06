@@ -36,7 +36,7 @@ const teachers: Teacher[] = [
   },
   {
     name: "Islom Shahobiddinov",
-    role: "Softwear Enginer",
+    role: "Software Engineer",
     expertise: "AI Coach",
     image: "/islom.jpeg",
     inspiringQuote: "Kelajak AI bilan - men bu yo'lda yo'lboshchi bo'laman",

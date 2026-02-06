@@ -178,7 +178,7 @@ export function HeroSection() {
                   {/* ✅ IMAGE CLIPPED INSIDE */}
                   <g clipPath="url(#hero-blob)">
                     <image
-                      href="/hero-banner-img.jpg"
+                      href="/newHeroImg.png"
                       x="0"
                       y="0"
                       width="480"

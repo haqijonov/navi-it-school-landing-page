@@ -16,21 +16,27 @@ import {
 const benefits = [
   {
     icon: Shield,
-    title: "Xavfsiz va ishonchli muhit",
+    title: "Kichik guruhlar",
     description:
-      "Bizning platformamizda har bir o'quvchi xavfsiz va qulay sharoitda ta'lim oladi.  Dasturchilar va murabbiylar bilan jonli darslar bo'ladi.",
+      "Har bir guruhda o‘quvchilar soni kam bo‘lgani uchun ustoz har bir bolaga alohida e’tibor qaratadi. Natijada darslar samarali, tushunarli va faol muloqotga boy bo‘ladi.",
   },
   {
     icon: Star,
-    title: "Qiziqarli ta'lim",
+    title: "Leksiya emas - har oy loyiha",
     description:
-      "Eng zamonaviy metodlar va texnologiyalar bilan ta'minlangan dastur. Har bir dars qiziqarli va amaliy bilimlar bilan to'ldirilgan.",
+      "Nazariya bilan cheklanib qolmaymiz — har oy o‘quvchilar loyihalar yaratib, o‘rgangan bilimlarini amaliyotda mustahkamlaydi.",
   },
   {
     icon: Heart,
-    title: "Shaxsiy yondashuv",
+    title: "Ustozlar - praktik va pedagoglar",
     description:
-      "Har bir o‘quvchiga individual yondashuv. Kichik guruhlar va shaxsiy e’tibor orqali bola o‘z potentsialini to‘liq ochadi.",
+      "Darslarni sohada faol ishlayotgan dasturchilar va tajribali pedagoglar olib boradi. Ular bolalarga nafaqat bilim, balki haqiqiy ish tajribasini ham ulashadi.",
+  },
+  {
+    icon: Heart,
+    title: "Mustaqil fikrlash",
+    description:
+      "Mashg‘ulotlar davomida o‘quvchilar tayyor javoblarni emas, muammolarni mustaqil hal qilishni o‘rganadi. Bu esa ularda ijodiy va tahliliy fikrlashni rivojlantiradi.",
   },
 ];
 
@@ -58,15 +64,6 @@ export function WhyNaviSection() {
               Nega NAVI ?
             </span>
           </h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewportConfig}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-lg md:text-xl text-muted-foreground leading-relaxed"
-          >
-            Nega ota-onalar aynan NAVI ni tanlashadi?
-          </motion.p>
         </motion.div>
 
         {/* Main Content: Text + Circular Video */}

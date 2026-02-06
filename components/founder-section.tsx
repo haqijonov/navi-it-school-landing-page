@@ -143,7 +143,7 @@ export function FounderSection() {
                 Atham Azam
               </h3>
               <p className="text-xl md:text-2xl text-primary font-semibold mb-6">
-                Founder & CEO / Lead Mentor
+                Founder & CEO
               </p>
             </div>
 
@@ -158,10 +158,10 @@ export function FounderSection() {
             {/* Story Paragraphs */}
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
-                Mening orzuim — bolalar va yoshlar uchun faqat o'qish emas,
-                balki yaratishni o'rgatadigan platformani yaratish. NAVI orqali
-                biz kelajak mutaxassislarini tarbiyalaymiz, ular o'z g'oyalarini
-                amalga oshiradi va dunyoga o'z hissasini qo'shadi.
+                Mening maqsadim — bolalar va yoshlar uchun faqat o'qish emas,
+                balki ixtirolar qilishga undaydigan platformani yaratish. NAVI
+                orqali biz kelajak mutaxassislarini tarbiyalaymiz, ular o'z
+                g'oyalarini amalga oshiradi va dunyoga o'z hissasini qo'shadi.
               </p>
               <p>
                 Biz bilan birga bolalar nafaqat bilim oladi, balki o'z

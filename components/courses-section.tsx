@@ -20,7 +20,7 @@ const modules: Module[] = [
     description:
       "Farzandingiz dasturlash tillarini o'rganibgina qolmay, muammoni yechishni, mantiqiy va tanqidiy fikrlashni o'rganadi. Natijada u o'z hayotidagi muammolarga mustaqil yechim topa oladi.",
     mediaLeft: true,
-    image: "/programming-online.jpg",
+    image: "/newCourses2.png",
     shape: "playA",
   },
   {
@@ -29,16 +29,16 @@ const modules: Module[] = [
     description:
       "Biz bolalarga to'g'ri savol berishni, fikrlarni tahlil qilishni, tanqidiy fikrlashni, qilgan loyhalarini taqdimot qilishni va dalillar asosida qaror qabul qilishni o'rgatamiz. Bu harakatlar bola fikrlashini aniq, kuchli va mustaqil qilishga xizmat qiladi.",
     mediaLeft: false,
-    image: "/thinking.jpg",
+    image: "newCourses3.png",
     shape: "blob",
   },
   {
     id: "module-3",
-    title: "Sun'iy intelekt bilan to'gri ishlash",
+    title: "Sun'iy intellekt bilan to'gri ishlash",
     description:
-      "Sun'iy intelekt - bu dushman emas, balki hamkordir. Farzandingiz sun'iy intelekt bilan to'g'ri muloqot qilib, ijodiy fikrini kuchaytiradi va kelajak texnologiyalariga sog'lom munosabatni shakllantiradi.",
+      "Sun'iy intellekt - bu dushman emas, balki hamkordir. Farzandingiz sun'iy intellekt bilan to'g'ri muloqot qilib, ijodiy fikrini kuchaytiradi va kelajak texnologiyalariga sog'lom munosabatni shakllantiradi.",
     mediaLeft: true,
-    image: "/ai-literasing.jpg",
+    image: "/newCoursesImg1.png",
     shape: "playB",
   },
 ];
@@ -176,7 +176,7 @@ export function CoursesSection() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
             <span className="text-primary bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent ">
               {" "}
-              Farzandingizning fikirlashini o'zgartiradigan ta'lim
+              Farzandingizning fikrlashini o'zgartiradigan ta'lim
             </span>
           </h2>
           <p className="mt-4 text-base md:text-lg text-muted-foreground">

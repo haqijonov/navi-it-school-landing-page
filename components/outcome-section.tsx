@@ -2,7 +2,15 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
-import { Brain, CheckCircle2, Cpu, Lightbulb, Target } from "lucide-react";
+import {
+  Brain,
+  CheckCircle2,
+  Cpu,
+  Laptop,
+  Lightbulb,
+  Sparkle,
+  Target,
+} from "lucide-react";
 import { Container } from "@/components/ui/container";
 
 type OutcomeCard = {
@@ -15,34 +23,34 @@ const outcomeCards: OutcomeCard[] = [
   {
     icon: CheckCircle2,
     title: "Har oy loyiha yaratadi",
-    image: "/real-loyha-bola.jpg",
+    image: "/outcome-img1.png",
   },
   {
     icon: Brain,
     title:
-      "Sun'iy intelekt qanday ishlashini va to'g'ri foydalanishni o'rganadi",
-    image: "/ai-literasing.jpg",
+      "Sun'iy intellekt qanday ishlashini va to'g'ri foydalanishni o'rganadi",
+    image: "/outcome-img2.png",
   },
 
   {
     icon: Lightbulb,
     title: '"Qanday loyiha yaratay ekan?" deb o\'ylaydi',
-    image: "/thinking.jpg",
+    image: "/outcome-img3.png",
   },
   {
     icon: Target,
     title: "O'z kelajagi haqida tasavur qila oladi ",
-    image: "inde-think.jpg",
+    image: "/outcome-img4.png",
   },
   {
-    icon: Target,
+    icon: Sparkle,
     title: "Mustaqil fikrlashni boshlaydi",
-    image: "independed-thinking.jpg",
+    image: "/outcome-img5.png",
   },
   {
-    icon: Target,
+    icon: Laptop,
     title: "Telefon va kompyuterdan to'g'ri foydalanadi",
-    image: "it-chi.jpg",
+    image: "/outcome-img6.png",
   },
 ];
 
@@ -109,10 +117,6 @@ export function OutcomeSection() {
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/5 to-transparent" />
-
-                    <span className="absolute left-3 top-3 inline-flex h-7 w-7 items-center justify-center rounded-full border border-white/70 bg-white/80 text-[11px] font-semibold text-foreground backdrop-blur-sm">
-                      {index + 1}
-                    </span>
                   </div>
 
                   <div className="flex items-start gap-3 p-4 md:p-5">
@@ -126,10 +130,6 @@ export function OutcomeSection() {
                 </motion.li>
               ))}
             </ol>
-
-            <p className="mt-5 text-right text-xs md:text-sm text-muted-foreground/90">
-              Bu boshlanish xolos.
-            </p>
           </motion.div>
         </div>
       </Container>

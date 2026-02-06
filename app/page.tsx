@@ -10,6 +10,8 @@ import { TeachersSection } from "@/components/teachers-section";
 import { FounderSection } from "@/components/founder-section";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import AmoForm from "@/components/formAmo";
+import Contact from "@/components/contact";
 
 export default function Home() {
   return (
@@ -21,9 +23,11 @@ export default function Home() {
       <OutcomeSection />
       {/* <ContactSection id="contact-1" /> */}
       {/* <GamifiedPlatformSection /> */}
+
       <WhyNaviSection />
+      <Contact />
       <FAQSection />
-      <ContactSection id="contact" />
+      {/* <ContactSection id="contact" /> */}
       <TeachersSection />
       <FounderSection />
       {/* <ContactSection id="contact-3" /> */}
