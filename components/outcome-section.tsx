@@ -52,7 +52,7 @@ export function OutcomeSection() {
   return (
     <section
       id="outcome"
-      className="relative py-16 md:py-24 lg:py-28"
+      className="relative w-full py-16 md:py-24 lg:py-28"
       aria-labelledby="outcome-title"
     >
       <Container>

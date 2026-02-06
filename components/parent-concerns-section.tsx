@@ -39,7 +39,7 @@ export function ParentConcernsSection() {
   return (
     <section
       id="parent-concerns"
-      className="relative py-14 md:py-20 lg:py-24"
+      className="relative w-full py-14 md:py-20 lg:py-24"
       aria-labelledby="parent-concerns-title"
     >
       <Container>

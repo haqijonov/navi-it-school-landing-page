@@ -168,7 +168,7 @@ export function CoursesSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-background py-16 md:py-24 lg:py-28"
+      className="relative w-full bg-background py-16 md:py-24 lg:py-28"
       aria-labelledby="courses-title"
     >
       <Container>

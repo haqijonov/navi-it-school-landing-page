@@ -55,7 +55,7 @@ export function FAQSection() {
   return (
     <section
       id="faq"
-      className="relative bg-secondary py-20 md:py-28 overflow-hidden"
+      className="relative w-full overflow-hidden bg-secondary py-20 md:py-28"
       aria-labelledby="faq-title"
     >
       <Container className="relative z-10">

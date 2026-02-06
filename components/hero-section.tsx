@@ -48,12 +48,12 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative bg-background py-16 md:py-24 lg:py-28"
+      className="relative w-full bg-background py-16 md:py-24 lg:py-28"
       aria-labelledby="hero-title"
     >
       <Container>
         {/* Hero two-column layout */}
-        <div className="w-100 text-center justify-center mt-12 flex mx-auto mb-12 items-center gap-2 rounded-full bg-muted border border-border px-6 py-3">
+        <div className="mt-12 mb-12 mx-auto flex w-full max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-border bg-muted px-6 py-3 text-center sm:w-fit">
           <Trophy className="h-5 w-5 text-black" />
           <span className="text-sm md:text-base font-medium text-black">
             5 yildan ortiq bolalarni o&apos;qitamiz
@@ -63,7 +63,12 @@ export function HeroSection() {
           {/* Left: Title + subtitle + key result + CTA */}
           <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-5 md:gap-6">
             <div className="w-full" id="hero-title">
-              <HeroTitle className="mb-0 text-center lg:text-left" />
+              {/* <HeroTitle className="mb-0 text-center lg:text-left" /> */}
+              <h1 className="text-4xl md:text-6xl lg:text-4xl font-extrabold text-primary mb-6  leading-tight">
+                {" "}
+                Bugun farzandingizni kelajakka tayyorlamasangiz — ertaga kech
+                bo‘ladi!
+              </h1>
             </div>
 
             <p className="max-w-[38ch] text-sm md:text-base lg:text-lg text-foreground/75 leading-relaxed mx-auto lg:mx-0">

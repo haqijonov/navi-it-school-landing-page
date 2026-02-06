@@ -63,9 +63,9 @@ export function ContactSection({ id }: ContactSectionProps) {
   };
 
   return (
-    <section id={id} className="py-20 md:py-28 bg-background">
+    <section id={id} className="w-full bg-background py-20 md:py-28">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] items-center">
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] [&>*]:min-w-0">
           {/* Left column: title, intro, form */}
           <div className="max-w-2xl w-full mx-auto">
             <Card className="bg-transparent shadow-none">
