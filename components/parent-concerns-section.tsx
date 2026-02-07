@@ -53,7 +53,7 @@ export function ParentConcernsSection() {
           >
             <h2
               id="parent-concerns-title"
-              className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground"
+              className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6 bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent "
             >
               Ota-onalar bugun nimadan xavotirda?
             </h2>

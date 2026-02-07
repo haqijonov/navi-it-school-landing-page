@@ -64,7 +64,7 @@ export function HeroSection() {
           <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-5 md:gap-6">
             <div className="w-full" id="hero-title">
               {/* <HeroTitle className="mb-0 text-center lg:text-left" /> */}
-              <h1 className="text-4xl md:text-6xl lg:text-4xl font-extrabold text-primary mb-6  leading-tight">
+              <h1 className="text-2xl md:text-6xl lg:text-4xl font-extrabold text-primary mb-6  leading-tight">
                 {" "}
                 Bugun farzandingizni kelajakka tayyorlamasangiz — ertaga kech
                 bo‘ladi!
@@ -113,7 +113,7 @@ export function HeroSection() {
           {/* Right: Media */}
           <div className="order-1 lg:order-2  mx-auto lg:mx-0">
             <motion.div
-              className="relative aspect-[4/3] w-full"
+              className="relative aspect-[] w-full"
               initial={{ y: 0 }}
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -130,7 +130,7 @@ export function HeroSection() {
                   aria-hidden="true"
                 >
                   <defs>
-                    {/* Soft gradient (ref dagidek) */}
+                    {/* Soft gradient */}
                     <linearGradient id="hero-glow" x1="0" y1="0" x2="1" y2="1">
                       <stop offset="0%" stopColor="#dff5ff" />
                       <stop offset="55%" stopColor="#e9fbf3" />
@@ -148,10 +148,10 @@ export function HeroSection() {
                       <feGaussianBlur stdDeviation="10" />
                     </filter>
 
-                    {/* ✅ Main shape path from your NEW svg */}
+                    {/* ✅ NEW SHAPE: diamond / rhombus */}
                     <path
                       id="hero-blob-path"
-                      d="M320 0v160a160 160 0 1 0-320 0v320h160V320a160 160 0 1 0 320 0V0H320Z"
+                      d="M197.6 42.4 42.4 197.6a60 60 0 0 0 0 84.8l155.2 155.2a60 60 0 0 0 84.8 0l155.2-155.2a60 60 0 0 0 0-84.8L282.4 42.4a60 60 0 0 0-84.8 0Z"
                     />
 
                     {/* ✅ Clip uses the SAME shape */}

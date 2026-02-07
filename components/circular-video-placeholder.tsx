@@ -15,8 +15,10 @@ export function CircularVideoPlaceholder({
   const [isHovered, setIsHovered] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isTouchActive, setIsTouchActive] = useState(false);
+  const [showControls, setShowControls] = useState(true);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const touchTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleTogglePlay = async () => {
     if (onClick) {
@@ -39,6 +41,20 @@ export function CircularVideoPlaceholder({
     }
   };
 
+  const clearHideTimer = () => {
+    if (hideTimerRef.current) {
+      clearTimeout(hideTimerRef.current);
+      hideTimerRef.current = null;
+    }
+  };
+
+  const scheduleHideControls = () => {
+    clearHideTimer();
+    hideTimerRef.current = setTimeout(() => {
+      setShowControls(false);
+    }, 1000);
+  };
+
   const handleTouchActivate = () => {
     setIsTouchActive(true);
     if (touchTimeoutRef.current) {
@@ -46,7 +62,13 @@ export function CircularVideoPlaceholder({
     }
     touchTimeoutRef.current = setTimeout(() => {
       setIsTouchActive(false);
-    }, 2000);
+    }, 1000);
+
+    // Mobile: show controls briefly on touch
+    setShowControls(true);
+    if (isPlaying) {
+      scheduleHideControls();
+    }
   };
 
   useEffect(() => {
@@ -54,6 +76,7 @@ export function CircularVideoPlaceholder({
       if (touchTimeoutRef.current) {
         clearTimeout(touchTimeoutRef.current);
       }
+      clearHideTimer();
     };
   }, []);
 
@@ -121,7 +144,7 @@ export function CircularVideoPlaceholder({
 
           {/* Video Circle */}
           <div
-            className="absolute inset-4 sm:inset-5 md:inset-6 rounded-full overflow-hidden shadow-2xl ring-2 ring-primary/20 z-20"
+            className="absolute inset-7 sm:inset-5 md:inset-8 rounded-full overflow-hidden shadow-2xl ring-2 ring-primary/20 z-20"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onTouchStart={handleTouchActivate}
@@ -133,17 +156,29 @@ export function CircularVideoPlaceholder({
               playsInline
               preload="metadata"
               poster="/video-poster.jpeg"
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
-              onEnded={() => setIsPlaying(false)}
+              onPlay={() => {
+                setIsPlaying(true);
+                setShowControls(true);
+                scheduleHideControls();
+              }}
+              onPause={() => {
+                setIsPlaying(false);
+                setShowControls(true);
+                clearHideTimer();
+              }}
+              onEnded={() => {
+                setIsPlaying(false);
+                setShowControls(true);
+                clearHideTimer();
+              }}
             />
 
-            {/* Play/Pause Overlay */}
+            {/* Play/Pause Overlay - Desktop (unchanged behavior) */}
             <button
               type="button"
               onClick={handleTogglePlay}
               aria-label={isPlaying ? "Pause video" : "Play video"}
-              className={`absolute inset-0 z-30 flex items-center justify-center transition-[opacity,transform] duration-200 focus:outline-none focus:ring-4 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background ${
+              className={`absolute inset-0 z-30 hidden md:flex items-center justify-center transition-[opacity,transform] duration-200 focus:outline-none focus:ring-4 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background ${
                 showControl
                   ? "opacity-100 scale-100"
                   : "opacity-0 scale-95 pointer-events-none"
@@ -154,6 +189,26 @@ export function CircularVideoPlaceholder({
                   <Pause className="w-10 h-10 md:w-12 md:h-12" />
                 ) : (
                   <Play className="w-10 h-10 md:w-12 md:h-12 ml-1" />
+                )}
+              </span>
+            </button>
+
+            {/* Play/Pause Overlay - Mobile (auto-hide) */}
+            <button
+              type="button"
+              onClick={handleTogglePlay}
+              aria-label={isPlaying ? "Pause video" : "Play video"}
+              className={`absolute inset-0 z-30 flex md:hidden items-center justify-center transition-[opacity,transform] duration-200 focus:outline-none focus:ring-4 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background ${
+                showControls
+                  ? "opacity-100 scale-100 pointer-events-auto"
+                  : "opacity-0 scale-95 pointer-events-none"
+              }`}
+            >
+              <span className="flex items-center justify-center w-20 h-20 rounded-full bg-black/40 backdrop-blur-md ring-1 ring-white/20 text-white shadow-xl">
+                {isPlaying ? (
+                  <Pause className="w-10 h-10" />
+                ) : (
+                  <Play className="w-10 h-10 ml-1" />
                 )}
               </span>
             </button>

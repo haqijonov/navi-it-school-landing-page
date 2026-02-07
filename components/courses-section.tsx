@@ -61,7 +61,7 @@ function ModuleIllustration({ module }: { module: Module }) {
     <div className="relative h-full w-full">
       <svg
         viewBox="0 0 480 480"
-        className="h-full w-full scale-[1.15] md:scale-[1.1]"
+        className="h-full w-full scale-100 sm:scale-[1.05] md:scale-[1.1]"
         aria-hidden="true"
         style={{ background: "transparent" }}
       >
@@ -173,7 +173,7 @@ export function CoursesSection() {
     >
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
             <span className="text-primary bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent ">
               {" "}
               Farzandingizning fikrlashini o'zgartiradigan ta'lim
@@ -255,7 +255,7 @@ export function CoursesSection() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.4 }}
             >
-              <div className="relative h-[260px] w-full">
+              <div className="relative h-[260px] w-full overflow-x-clip sm:overflow-visible">
                 <motion.div
                   className="absolute inset-0"
                   animate={{ y: [0, -6, 0] }}
@@ -269,10 +269,7 @@ export function CoursesSection() {
                 </motion.div>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                  Modullll {index + 1}
-                </p>
-                <h3 className="mt-2 text-xl font-semibold text-foreground">
+                <h3 className="mt-2 text-2xl font-semibold text-primary">
                   {module.title}
                 </h3>
                 <p className="mt-3 text-base text-muted-foreground">

@@ -44,7 +44,7 @@ export function GamifiedPlatformSection() {
           </div>
 
           {/* Platform Mockup */}
-          <div className="relative">
+          <div className="relative overflow-x-clip">
             <Card className="bg-background border-none shadow-2xl overflow-hidden">
               <CardContent className="p-0">
                 <div className="bg-secondary p-4 border-b border-border">

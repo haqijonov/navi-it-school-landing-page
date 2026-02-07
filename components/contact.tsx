@@ -4,7 +4,10 @@ import { Container } from "./ui/container";
 
 function Contact() {
   return (
-    <div id="contact" className="flex p-12 w-full items-center justify-center">
+    <div
+      id="contact"
+      className="flex min-w-0 p-12 w-full items-center justify-center"
+    >
       <AmoForm />
     </div>
   );

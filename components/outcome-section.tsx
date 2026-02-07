@@ -39,7 +39,7 @@ const outcomeCards: OutcomeCard[] = [
   },
   {
     icon: Target,
-    title: "O'z kelajagi haqida tasavur qila oladi ",
+    title: "O'z kelajagi haqida tasavvur qila oladi ",
     image: "/outcome-img4.png",
   },
   {

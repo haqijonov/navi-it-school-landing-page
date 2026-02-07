@@ -75,13 +75,18 @@ export function FounderSection() {
 
         {/* Main Content: Split Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
+          {/* Mobile: Name */}
+          <h3 className="order-1 md:hidden text-3xl font-bold text-foreground text-center">
+            Atham Azam
+          </h3>
+
           {/* Left: Founder Image */}
           <div
-            className={`relative order-2 lg:order-1 flex items-center justify-center ${
+            className={`relative order-2 md:order-2 lg:order-1 flex items-center justify-center ${
               isVisible ? "animate-fade-in-up" : "opacity-0"
             }`}
           >
-            <div className="relative w-full max-w-md">
+            <div className="relative w-[78%] max-w-md mx-auto md:w-full">
               {/* Floating Icons */}
               <div
                 className="absolute -top-8 -right-8 w-16 h-16 rounded-full bg-primary/10 backdrop-blur-sm border-2 border-primary/20 flex items-center justify-center animate-float-slow"
@@ -130,15 +135,20 @@ export function FounderSection() {
             </div>
           </div>
 
+          {/* Mobile: Role */}
+          <p className="order-3 md:hidden text-xl text-primary font-semibold text-center">
+            Founder & CEO
+          </p>
+
           {/* Right: Story Content */}
           <div
-            className={`order-1 lg:order-2 space-y-8 ${
+            className={`order-4 md:order-1 lg:order-2 flex flex-col items-center md:items-start space-y-6 ${
               isVisible ? "animate-fade-in-up" : "opacity-0"
             }`}
             style={{ animationDelay: "200ms" }}
           >
-            {/* Name & Role */}
-            <div>
+            {/* Name & Role (md+) */}
+            <div className="hidden md:block">
               <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
                 Atham Azam
               </h3>
@@ -148,15 +158,15 @@ export function FounderSection() {
             </div>
 
             {/* Headline */}
-            <div className="relative">
+            <div className="relative order-4 w-full">
               <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-cyan-500 to-purple-500 rounded-full" />
-              <p className="text-2xl md:text-3xl font-bold text-foreground leading-tight pl-6">
+              <p className="text-2xl md:text-3xl font-bold text-foreground leading-tight pl-6 text-left">
                 Kelajakda ishonchli yaratuvchilarni tarbiyalaymiz
               </p>
             </div>
 
             {/* Story Paragraphs */}
-            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+            <div className="order-5 space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
                 Mening maqsadim — bolalar va yoshlar uchun faqat o'qish emas,
                 balki ixtirolar qilishga undaydigan platformani yaratish. NAVI
@@ -175,7 +185,7 @@ export function FounderSection() {
             </div>
 
             {/* Key Values */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-border">
+            <div className="order-6 grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-border">
               {values.map((value, index) => (
                 <div
                   key={value.title}
@@ -198,7 +208,7 @@ export function FounderSection() {
             </div>
 
             {/* Credentials */}
-            <div className="pt-6 space-y-2">
+            <div className="order-7 pt-6 space-y-2">
               <p className="text-sm font-semibold text-foreground mb-3">
                 Qo'shimcha loyihalar:
               </p>

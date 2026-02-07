@@ -2,6 +2,12 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface FAQItem {
   question: string;
@@ -68,7 +74,7 @@ export function FAQSection() {
         >
           <h2
             id="faq-title"
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6"
+            className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6"
           >
             <span className="text-primary bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent">
               Ota-onalar so'raydigan savollar
@@ -80,7 +86,7 @@ export function FAQSection() {
         </motion.div>
 
         {/* Desktop radial layout */}
-        <div className="relative hidden lg:block">
+        <div className="relative hidden md:block">
           <div className="relative mx-auto h-[520px] max-w-5xl">
             {/* Center illustration */}
             <motion.div
@@ -191,70 +197,24 @@ export function FAQSection() {
           </div>
         </div>
 
-        {/* Mobile stack */}
-        <div className="lg:hidden space-y-5">
-          <motion.div
-            className="mx-auto h-[220px] w-[220px]"
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <svg viewBox="0 0 320 320" className="h-full w-full" aria-hidden>
-              <defs>
-                <linearGradient
-                  id="faq-center-mobile"
-                  x1="0"
-                  y1="0"
-                  x2="1"
-                  y2="1"
-                >
-                  <stop offset="0%" stopColor="#dff5ff" />
-                  <stop offset="50%" stopColor="#e9fbf3" />
-                  <stop offset="100%" stopColor="#eef3ff" />
-                </linearGradient>
-              </defs>
-              <path
-                d="M72 48 C122 20, 226 24, 268 86 C304 142, 286 232, 220 264 C154 296, 84 280, 44 214 C8 154, 22 82, 72 48 Z"
-                fill="url(#faq-center-mobile)"
-                className="drop-shadow-[0_24px_50px_rgba(14,116,144,0.14)]"
-              />
-              <circle cx="130" cy="150" r="28" fill="#ffffff" opacity="0.9" />
-              <rect
-                x="150"
-                y="120"
-                width="70"
-                height="60"
-                rx="24"
-                fill="#dff5ff"
-              />
-              <circle cx="172" cy="148" r="6" fill="#38bdf8" />
-              <circle cx="196" cy="148" r="6" fill="#38bdf8" />
-              <path
-                d="M132 184 C152 198, 186 198, 206 184"
-                stroke="#38bdf8"
-                strokeWidth="6"
-                strokeLinecap="round"
-                fill="none"
-              />
-            </svg>
-          </motion.div>
-
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={faq.question}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.45, delay: index * 0.05 }}
-              className="rounded-3xl bg-white/90 px-5 py-4 text-left shadow-[0_14px_35px_rgba(15,23,42,0.08)]"
-            >
-              <p className="text-sm font-semibold text-foreground">
-                {faq.question}
-              </p>
-              <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
-                {faq.answer}
-              </p>
-            </motion.div>
-          ))}
+        {/* Mobile accordion */}
+        <div className="block md:hidden">
+          <Accordion type="single" collapsible defaultValue="faq-0">
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={faq.question}
+                value={`faq-${index}`}
+                className="mb-3 rounded-2xl border border-white/30 bg-transparent px-4 shadow-none"
+              >
+                <AccordionTrigger className="text-sm font-semibold text-foreground">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-xs text-muted-foreground leading-relaxed">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
 
         <div className="text-center mt-12">
