@@ -16,9 +16,11 @@ export function CircularVideoPlaceholder({
   const [isPlaying, setIsPlaying] = useState(false);
   const [isTouchActive, setIsTouchActive] = useState(false);
   const [showControls, setShowControls] = useState(true);
+  const [playbackMessage, setPlaybackMessage] = useState<string | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const touchTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hasLoggedPlayErrorRef = useRef(false);
 
   const handleTogglePlay = async () => {
     if (onClick) {
@@ -33,7 +35,14 @@ export function CircularVideoPlaceholder({
     if (video.paused) {
       try {
         await video.play();
-      } catch {
+        setPlaybackMessage(null);
+      } catch (error) {
+        if (!hasLoggedPlayErrorRef.current) {
+          console.error("Video play() was blocked or failed:", error);
+          hasLoggedPlayErrorRef.current = true;
+        }
+        setPlaybackMessage("Unable to play video. Tap to retry.");
+        setShowControls(true);
         return;
       }
     } else {
@@ -152,12 +161,14 @@ export function CircularVideoPlaceholder({
             <video
               ref={videoRef}
               className="w-full h-full object-cover transition duration-200 group-hover:brightness-105"
-              src="/nega-aynan.mp4"
+              src="/nega-aynan.MP4"
               playsInline
+              controls={false}
               preload="metadata"
               poster="/video-poster.jpeg"
               onPlay={() => {
                 setIsPlaying(true);
+                setPlaybackMessage(null);
                 setShowControls(true);
                 scheduleHideControls();
               }}
@@ -170,6 +181,14 @@ export function CircularVideoPlaceholder({
                 setIsPlaying(false);
                 setShowControls(true);
                 clearHideTimer();
+              }}
+              onError={() => {
+                if (!hasLoggedPlayErrorRef.current) {
+                  console.error("Video failed to load:", videoRef.current?.currentSrc);
+                  hasLoggedPlayErrorRef.current = true;
+                }
+                setPlaybackMessage("Video failed to load. Tap to retry.");
+                setShowControls(true);
               }}
             />
 
@@ -212,6 +231,12 @@ export function CircularVideoPlaceholder({
                 )}
               </span>
             </button>
+
+            {playbackMessage ? (
+              <div className="absolute bottom-3 left-1/2 z-40 -translate-x-1/2 rounded-full bg-black/55 px-3 py-1 text-[11px] text-white/90 backdrop-blur-sm pointer-events-none">
+                {playbackMessage}
+              </div>
+            ) : null}
           </div>
 
           {/* Decorative Dots */}
