@@ -46,7 +46,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: "Qachon boshlash mumkin?",
-    answer: "Hohlagan vaqtda. Biz mos guruh va jadvalni topib beramiz.",
+    answer: "Xohlagan vaqtda. Biz mos guruh va jadvalni topib beramiz.",
     position: "left-1/2 -translate-x-1/2 top-[84%]",
     tail: "left-1/2 -top-2 -translate-x-1/2",
   },
