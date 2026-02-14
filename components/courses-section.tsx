@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
+import { CheckCircle2 } from "lucide-react";
 
 type Module = {
   id: string;
@@ -180,13 +181,36 @@ export function CoursesSection() {
               Biz shunchaki IT o’qitmaymiz.
             </span>
           </h2>
-          <p className="mt-4 text-base md:text-lg text-muted-foreground">
-            Ko’p o’quv markazlar dasturlash tillarini o’rgatadi xolos. <br />{" "}
-            Biz bolani bosqichma-bosqich kuzatib, yordam berib boramiz: <br />{" "}
-            <br /> - dasturchi kabi fikrlash <br /> - sun’iy intellektni
-            tushunish, unda to’g’ri ishlash <br /> - o’z kelajagini tasavvur
-            qilish
-          </p>
+          <div className="mt-4">
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              Ko’p o’quv markazlar dasturlash tillarini o’rgatadi xolos. Biz
+              bolani bosqichma-bosqich kuzatib, yordam berib boramiz:
+            </p>
+
+            <ul className="mt-5 grid gap-2 sm:grid-cols-2 text-left">
+              <li className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 text-sm md:text-base text-foreground/85">
+                <CheckCircle2
+                  className="h-4 w-4 shrink-0 text-primary"
+                  aria-hidden="true"
+                />
+                Dasturchi kabi fikrlash
+              </li>
+              <li className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 text-sm md:text-base text-foreground/85">
+                <CheckCircle2
+                  className="h-4 w-4 shrink-0 text-primary"
+                  aria-hidden="true"
+                />
+                O’z kelajagini tasavvur qilish
+              </li>
+              <li className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 text-sm md:text-base text-foreground/85 sm:col-span-2 sm:justify-center">
+                <CheckCircle2
+                  className="h-4 w-4 shrink-0 text-primary"
+                  aria-hidden="true"
+                />
+                Sun’iy intellektni tushunish va to’g’ri ishlash
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Desktop: scroll story */}

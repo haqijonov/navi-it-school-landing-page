@@ -1,6 +1,13 @@
 "use client";
 
-import { Trophy, Rocket, Calendar, Clock, User, Heart } from "lucide-react";
+import {
+  CheckCircle2,
+  Rocket,
+  Calendar,
+  Clock,
+  User,
+  Heart,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -71,9 +78,35 @@ export function HeroSection() {
                 aniq yo‘nalishga aylantiramiz.
               </span>
 
-              <span className="mt-4 block">
-                -Shaxsiy mentor <br /> -Kichik guruhlar <br /> -Har oy loyiha +
-                ota-onaga hisobot <br /> -5+ yil tajriba
+              <span className="mt-4 grid gap-2">
+                <span className="inline-flex items-center gap-2 ">
+                  <CheckCircle2
+                    className="h-4 w-4 shrink-0 text-primary"
+                    aria-hidden="true"
+                  />
+                  Shaxsiy mentor
+                </span>
+                <span className="inline-flex items-center gap-2 ">
+                  <CheckCircle2
+                    className="h-4 w-4 shrink-0 text-primary"
+                    aria-hidden="true"
+                  />
+                  Kichik guruhlar
+                </span>
+                <span className="inline-flex items-center gap-2 ">
+                  <CheckCircle2
+                    className="h-4 w-4 shrink-0 text-primary"
+                    aria-hidden="true"
+                  />
+                  Har oy loyiha va ota-onaga hisobot
+                </span>
+                <span className="inline-flex items-center gap-2 ">
+                  <CheckCircle2
+                    className="h-4 w-4 shrink-0 text-primary"
+                    aria-hidden="true"
+                  />
+                  5+ yil tajriba
+                </span>
               </span>
               {/* <span className="block">
                 kelajakda o&apos;z o&apos;rnini topa oladigan inson
