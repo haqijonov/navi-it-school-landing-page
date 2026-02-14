@@ -120,7 +120,7 @@ export function FounderSection() {
                 {/* Photo with Soft Mask */}
                 <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl shadow-primary/20">
                   <img
-                    src="/atham.JPG"
+                    src="/video-poster.jpeg"
                     alt="Atham Azam - NAVI Founder & CEO, ta'lim va texnologiya sohasidagi mutaxassis"
                     className="w-full h-full object-cover object-center"
                   />

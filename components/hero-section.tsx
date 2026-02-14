@@ -10,24 +10,24 @@ import { HeroTitle } from "./hero-title";
 const features = [
   {
     icon: Rocket,
-    title: "Individual darslar",
-    description: "Har bir o'quvchi uchun shaxsiy yondashuv",
+    title: "Tajriba",
+    description: "5+ yillik o’smirlar bilan ishlashdagi tajriba",
   },
   {
     icon: Calendar,
     secondaryIcon: Clock,
-    title: "Shaxsiy jadval",
-    description: "O'zingizga qulay vaqtda o'rganing",
+    title: "Natija",
+    description: "10 000+ bitiruvchi",
   },
   {
     icon: User,
-    title: "Tajribali o'qituvchi",
-    description: "Malakali va e'tiborli murabbiylar",
+    title: "Ishonch",
+    description: "20 000+ ota-ona",
   },
   {
     icon: Heart,
-    title: "Qiziqishni saqlaymiz",
-    description: "Qiziqarli va interaktiv o'qitish",
+    title: "G'amxo'rlik",
+    description: "2 500+ aktiv o’quvchilar",
   },
 ];
 
@@ -53,12 +53,7 @@ export function HeroSection() {
     >
       <Container>
         {/* Hero two-column layout */}
-        <div className="mt-12 mb-12 mx-auto flex w-full max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-border bg-muted px-6 py-3 text-center sm:w-fit">
-          <Trophy className="h-5 w-5 text-black" />
-          <span className="text-sm md:text-base font-medium text-black">
-            5 yildan ortiq bolalarni o&apos;qitamiz
-          </span>
-        </div>
+
         <div className="grid gap-10 lg:grid-cols-2 lg:grid lg:items-center mx-auto">
           {/* Left: Title + subtitle + key result + CTA */}
           <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-5 md:gap-6">
@@ -66,35 +61,32 @@ export function HeroSection() {
               {/* <HeroTitle className="mb-0 text-center lg:text-left" /> */}
               <h1 className="text-2xl md:text-6xl lg:text-4xl font-extrabold text-primary mb-6  leading-tight">
                 {" "}
-                Bugun farzandingizni kelajakka tayyorlamasangiz — ertaga kech
-                bo‘ladi!
+                Telefon farzandingiz kelajagini boshqarmasin!
               </h1>
             </div>
 
             <p className="max-w-[38ch] text-sm md:text-base lg:text-lg text-foreground/75 leading-relaxed mx-auto lg:mx-0">
               <span className="block">
-                Sun&apos;iy intellekt dunyoni o&apos;zgartiryapti.
+                Biz telefon qaramligini foydali ko‘nikmalar, real loyihalar va
+                aniq yo‘nalishga aylantiramiz.
               </span>
-              <span className="block">
-                Oddiy ta'lim va oddiy to&apos;garaklar esa — yo&apos;q.
-              </span>
+
               <span className="mt-4 block">
-                NAVI bolalarni IT ni o&apos;rganishga emas,
+                -Shaxsiy mentor <br /> -Kichik guruhlar <br /> -Har oy loyiha +
+                ota-onaga hisobot <br /> -5+ yil tajriba
               </span>
-              <span className="block">
+              {/* <span className="block">
                 kelajakda o&apos;z o&apos;rnini topa oladigan inson
                 bo&apos;lishga tayyorlaydi.
-              </span>
+              </span> */}
             </p>
 
             <div
               role="note"
-              className="max-w-[38ch] rounded-2xl border border-primary/25 bg-gradient-to-r from-primary/15 to-primary/5 px-4 py-3 text-left shadow-sm mx-auto lg:mx-0"
+              className="max-w-[38ch] lg:ml-7 rounded-2xl border border-primary/25 bg-gradient-to-r from-primary/15 to-primary/5 px-4 py-3 text-left shadow-sm mx-auto lg:mx-0"
             >
-              <p className="flex items-start gap-2 text-sm md:text-base font-semibold text-foreground/90 leading-relaxed">
-                <span>
-                  1 oy ichida — farzandingiz birinchi IT loyihasini yaratadi.
-                </span>
+              <p className="flex items-start gap-2 text-sm  md:text-[14px] font-semibold text-foreground/90 leading-relaxed">
+                <span>Farzandingiz yo‘nalishini aniqlab beramiz</span>
               </p>
             </div>
 
@@ -105,7 +97,7 @@ export function HeroSection() {
                 aria-label="Contact bo'limiga o'tish"
                 className="w-full h-auto px-8 py-4 text-base font-bold bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_16px_35px_rgba(0,67,255,0.28)] hover:scale-[1.02] transition-all duration-300 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                BEPUL darsga yozilish
+                BEPUL konsultatsiya
               </Button>
             </div>
           </div>

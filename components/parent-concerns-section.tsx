@@ -13,19 +13,19 @@ interface PainSignal {
 const painSignals: PainSignal[] = [
   {
     icon: Smartphone,
-    text: "Farzand ko'p vaqtini telefonda o'tkazyapti",
+    text: "Telefon farzandingiz hayotining markaziga aylangan",
   },
   {
     icon: School,
-    text: "Maktab baho qo'yadi, kelajakka tayorlamaydi ",
+    text: "Dunyo maktabdan ham tezroq o’zgaryapti",
   },
   {
     icon: Bot,
-    text: "Sun'iy intelekt chiqdi — eski kasblar yo'qolayapti",
+    text: "Kelajakda kim bo’lishi haqida aniq tushuncha yo’q",
   },
   {
     icon: Brain,
-    text: "Bola aqlli, lekin yo'nalishsiz",
+    text: "Qiziqishi bor, lekin yo‘l-yo‘riq yetishmaydi",
   },
   {
     icon: Cpu,
@@ -55,7 +55,7 @@ export function ParentConcernsSection() {
               id="parent-concerns-title"
               className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6 bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent "
             >
-              Ota-onalar bugun nimadan xavotirda?
+              Tanish holatmi?
             </h2>
           </motion.header>
 
@@ -86,7 +86,7 @@ export function ParentConcernsSection() {
                     <signal.icon className="h-3.5 w-3.5 text-primary/80 md:h-4 md:w-4" />
                   </span>
                   <div className="rounded-2xl border border-border/70 bg-background/90 px-4 py-3.5 md:px-5 md:py-4">
-                    <p className="text-sm md:text-base font-medium leading-relaxed text-foreground/90">
+                    <p className="text-sm md:text-lg font-medium leading-relaxed text-foreground/90">
                       {signal.text}
                     </p>
                   </div>
@@ -106,11 +106,11 @@ export function ParentConcernsSection() {
               className="mt-6 rounded-2xl border border-primary/30 bg-primary/10 px-4 py-4 md:mt-7 md:px-5"
             >
               <p className="text-[24px] md:text-base md:text-[22px] font-bold leading-relaxed text-foreground">
-                ❗️ Eng katta xato — "Keyinroq o'rganib olar" deyish.
+                ❗️Eng qo‘rqinchlisi — 12–17 yoshdagi yo‘qotilgan yillar!
               </p>
-              <p className="mt-1 text-sm md:text-base font-bold text-foreground/90">
+              {/* <p className="mt-1 text-sm md:text-base font-bold text-foreground/90">
                 Lekin kelajak kutmaydi!
-              </p>
+              </p> */}
             </motion.aside>
           </motion.div>
         </div>

@@ -12,23 +12,27 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import AmoForm from "@/components/formAmo";
 import Contact from "@/components/contact";
+import { MexanikSection } from "@/components/MexanikSection";
+import { TrustSection } from "@/components/trust-section";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Header />
       <HeroSection />
+      <Contact />
       <ParentConcernsSection />
       <CoursesSection />
+      <MexanikSection />
       <OutcomeSection />
       {/* <ContactSection id="contact-1" /> */}
       {/* <GamifiedPlatformSection /> */}
 
       <WhyNaviSection />
-      <Contact />
+      <TrustSection />
       <FAQSection />
       {/* <ContactSection id="contact" /> */}
-      <TeachersSection />
+      {/* <TeachersSection /> */}
       <FounderSection />
       {/* <ContactSection id="contact-3" /> */}
       <Footer />

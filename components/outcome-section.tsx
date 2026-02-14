@@ -22,7 +22,7 @@ type OutcomeCard = {
 const outcomeCards: OutcomeCard[] = [
   {
     icon: CheckCircle2,
-    title: "Har oy loyiha yaratadi",
+    title: "Bolada birinchi loyihasi paydo bo’ladi",
     image: "/outcome-img1.png",
   },
   {
@@ -34,12 +34,12 @@ const outcomeCards: OutcomeCard[] = [
 
   {
     icon: Lightbulb,
-    title: '"Qanday loyiha yaratay ekan?" deb o\'ylaydi',
+    title: "Kelajak haqida ongli ravishda gapira boshlaydi",
     image: "/outcome-img3.png",
   },
   {
     icon: Target,
-    title: "O'z kelajagi haqida tasavvur qila oladi ",
+    title: "Telefon qaramlik emas, foydali vositaga aylanadi",
     image: "/outcome-img4.png",
   },
   {
@@ -49,7 +49,7 @@ const outcomeCards: OutcomeCard[] = [
   },
   {
     icon: Laptop,
-    title: "Telefon va kompyuterdan to'g'ri foydalanadi",
+    title: "Ota-onalar bolada o’sish ko’radi",
     image: "/outcome-img6.png",
   },
 ];
@@ -72,11 +72,11 @@ export function OutcomeSection() {
             transition={{ duration: shouldReduceMotion ? 0.2 : 0.55 }}
             className="mb-8 text-center md:mb-10 lg:mb-12"
           >
-            <h2
-              id="outcome-title"
-              className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground"
-            >
-              1 oydan keyin natija ko'rasiz
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
+              <span className="text-primary bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent ">
+                {" "}
+                1 – 3 oyda nima o’zgaradi?
+              </span>
             </h2>
           </motion.header>
 

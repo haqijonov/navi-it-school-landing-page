@@ -13,7 +13,6 @@ export function Header() {
   const navLinks = [
     { href: "#courses", label: "Kurslarimiz" },
     { href: "#why-navi", label: "Nega NAVI" },
-    { href: "#teachers", label: "Ustozlarimiz" },
   ];
 
   const phoneNumber = "+998 90 128 09 90";
@@ -50,19 +49,33 @@ export function Header() {
             {/* Logo */}
             <a
               href="#"
-              className={`font-bold text-foreground transition-all duration-500 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xl ${
-                isScrolled ? "text-xl" : "text-2xl md:text-3xl"
-              }`}
+              className="group rounded-2xl px-1 py-1 text-foreground transition-all duration-500 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               aria-label="NAVI - Bosh sahifa"
             >
-              {/* <span className="bg-gradient-to-r from-primary via-cyan-500 to-primary bg-clip-text text-transparent">
-                NAVI
-              </span> */}
-              <img className="w-[120px]" src="/main-logo.png" alt="logo" />
+              <div className="flex  items-center">
+                <img
+                  className={`transition-all duration-500 ${
+                    isScrolled
+                      ? "w-[108px] md:w-[116px]"
+                      : "w-[120px] md:w-[128px]"
+                  }`}
+                  src="/main-logo.png"
+                  alt="NAVI logo"
+                />
+                <span
+                  className={` inline-flex max-w-[190px] rounded-full  text-primary/90  transition-all duration-500 leading-tight font-semibold ${
+                    isScrolled
+                      ? "px-2 py-0.5 text-[8px] md:px-2.5 md:text-[14px]"
+                      : "px-2.5 py-1 text-[9px] md:text-[14px]"
+                  }`}
+                >
+                  IT va sun&apos;iy intellekt bo&apos;yicha mentorlik markazi
+                </span>
+              </div>
             </a>
 
             {/* Desktop Navigation */}
-            <nav
+            {/* <nav
               className="hidden lg:flex items-center gap-4"
               aria-label="Asosiy navigatsiya"
             >
@@ -71,7 +84,7 @@ export function Header() {
                   {link.label}
                 </NavLink>
               ))}
-            </nav>
+            </nav> */}
 
             {/* Desktop Right Section: Phone + CTA */}
             <div className="hidden lg:flex items-center gap-6">

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
-import { CheckCircle2, Shield, Heart, Star } from "lucide-react";
+import { CheckCircle2, Shield, Heart, Star, Headphones } from "lucide-react";
 import { CircularVideoPlaceholder } from "./circular-video-placeholder";
 import {
   titleReveal,
@@ -16,27 +16,27 @@ import {
 const benefits = [
   {
     icon: Shield,
-    title: "Kichik guruhlar",
+    title: "Oy yakunida hisobot ",
     description:
-      "Har bir guruhda o‘quvchilar soni kam bo‘lgani uchun ustoz har bir bolaga alohida e’tibor qaratadi. Natijada darslar samarali, tushunarli va faol muloqotga boy bo‘ladi.",
+      "Har oy oxirida farzandingiz nimalarni o‘rgani, qayerda qiynalgani va keyingi qadamlar bo‘yicha aniq hisobot olasiz.",
   },
   {
     icon: Star,
-    title: "Leksiya emas - har oy loyiha",
+    title: "Mentor bilan aloqa",
     description:
-      "Nazariya bilan cheklanib qolmaymiz — har oy o‘quvchilar loyihalar yaratib, o‘rgangan bilimlarini amaliyotda mustahkamlaydi.",
+      "Mentor bilan bevosita bog‘lanib, savollaringizga tezkor javob olasiz.",
   },
   {
     icon: Heart,
-    title: "Ustozlar - praktik va pedagoglar",
+    title: "Progress kuzatuvi",
     description:
-      "Darslarni sohada faol ishlayotgan dasturchilar va tajribali pedagoglar olib boradi. Ular bolalarga nafaqat bilim, balki haqiqiy ish tajribasini ham ulashadi.",
+      "Farzandingizning o‘sishi va natijasi doimiy kuzatib boriladi.",
   },
   {
-    icon: Heart,
-    title: "Mustaqil fikrlash",
+    icon: Headphones,
+    title: "Qo’llab-quvvatlash",
     description:
-      "Mashg‘ulotlar davomida o‘quvchilar tayyor javoblarni emas, muammolarni mustaqil hal qilishni o‘rganadi. Bu esa ularda ijodiy va tahliliy fikrlashni rivojlantiradi.",
+      "Darsdan tashqari ham yordam va qo‘llab-quvvatlash doim mavjud.",
   },
 ];
 
@@ -84,8 +84,7 @@ export function WhyNaviSection() {
                 transition={{ delay: 0.1, duration: 0.6 }}
                 className="text-xl md:text-2xl text-foreground font-semibold leading-relaxed"
               >
-                Har bir bola kelajakda muvaffaqiyatli bo'lishi mumkin — biz
-                ularga to'g'ri yo'l ko'rsatamiz
+                Ota-ona doim nima bo’layatganidan xabardor
               </motion.p>
               <motion.div
                 initial="hidden"
@@ -124,7 +123,7 @@ export function WhyNaviSection() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="pt-6 border-t border-border"
             >
-              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+              {/* <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-primary" />
                   <span>2500+ o'quvchilar</span>
@@ -137,7 +136,7 @@ export function WhyNaviSection() {
                   <CheckCircle2 className="w-5 h-5 text-primary" />
                   <span>Professional yondashuv</span>
                 </div>
-              </div>
+              </div> */}
             </motion.div>
           </motion.div>
 

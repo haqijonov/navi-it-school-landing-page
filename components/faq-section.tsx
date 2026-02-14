@@ -18,36 +18,52 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "Darslar qanday formatda o'tadi?",
+    question: "Qimmat emasmi?",
     answer:
-      "Jonli onlayn formatda o'tadi. Har bir bola bilan individual yondashuv.",
+      "Oflaynga qaraganda arzonroq: yo‘l, vaqt va qo‘shimcha xarajatlar yo‘q. Eng muhimi — pul darsga emas, natijaga ishlaydi.",
     position: "left-0 top-6",
     tail: "left-[70%] top-full rotate-12",
   },
   {
-    question: "Farzandimga qiyin bo'lib qolmaydimi?",
-    answer: "Yo'q, darslarimiz bosqichma-bosqich, oson usulda o'tiladi.",
+    question: "Noutbukimiz yo‘q.",
+    answer:
+      "Boshlash uchun noutbuk kerak bo‘ladi. Ko‘pchilik ota-onalar konsultatsiyadan keyin bosqichma-bosqich olib beradi. Xohlasangiz, qaysi minimal noutbuk kerakligini aniq aytib beramiz.",
     position: "right-0 top-16",
     tail: "right-[65%] top-full -rotate-12",
   },
   {
-    question: "Natija nimada ko'rinadi?",
+    question: "Natija qanchada ko‘rinadi?",
     answer:
-      "Bolaning fikrlashida, mustaqil qarorlarida va bajargan loyihalarida.",
+      "Birinchi natijalar 1 oy ichida: farzandingiz birinchi kichik loyihani qiladi. 1–3 oyda o‘sish ko‘rinadi.",
     position: "left-6 bottom-12",
     tail: "left-[60%] -top-2 rotate-6",
   },
   {
     question: "Online darslar natija beradimi?",
     answer:
-      "Ha, online natija beradi. Gap formatda emas, ta'lim metodi va texnalogiyasida.",
+      "Ha. Natija formatda emas, metodika + mentor nazorati + amaliy loyihalarda. Shuning uchun online ham real natija beradi.",
     position: "right-8 bottom-4",
     tail: "right-[60%] -top-2 -rotate-6",
   },
   {
-    question: "Qachon boshlash mumkin?",
-    answer: "Xohlagan vaqtda. Biz mos guruh va jadvalni topib beramiz.",
-    position: "left-1/2 -translate-x-1/2 top-[84%]",
+    question: "Vaqti bekorga ketmaydimi?",
+    answer:
+      "Yo‘q. Har oy loyiha qiladi, mentor esa jarayonni nazorat qiladi. Telefon vaqtini “bekorchilik”dan foydali ko‘nikmaga aylantiramiz.",
+    position: "left-1/2 -translate-x-1/2 top-[80%]",
+    tail: "left-1/2 -top-2 -translate-x-1/2",
+  },
+  {
+    question: "To‘laydigan pul oqlanadimi?",
+    answer:
+      "Ha, chunki siz faqat dars emas, shaxsiy mentor, kichik guruh, loyiha va ota-onaga hisobot olasiz. Natija va nazorat — pulni oqlaydi.",
+    position: "left-1/4 -translate-x-1/2 top-[94%]",
+    tail: "left-1/2 -top-2 -translate-x-1/2",
+  },
+  {
+    question: "Natija bo‘ladimi?",
+    answer:
+      "Bo‘ladi — agar farzandingiz darslarga qatnashsa va topshiriqlarni bajarsa. Biz tomondan: mentor, tizim, nazorat va qo‘llab-quvvatlash bor.",
+    position: "left-2/3 -translate-x-1/7 top-[99%]",
     tail: "left-1/2 -top-2 -translate-x-1/2",
   },
 ];
@@ -223,7 +239,7 @@ export function FAQSection() {
             href="#contact"
             className="inline-block px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
-            BEPUL darsga yozilish
+            BEPUL kansultatsiya
           </a>
         </div>
       </Container>

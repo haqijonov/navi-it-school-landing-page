@@ -2,7 +2,6 @@
 
 import type React from "react";
 import { useState, useEffect } from "react";
-import { MessageCircle } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -57,18 +56,15 @@ export function FloatingContactButton() {
       <button
         onClick={handleClick}
         onKeyDown={handleKeyDown}
-        aria-label="Contact"
-        className="group fixed bottom-6 right-6 z-[9999] flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-primary/95 text-primary-foreground shadow-lg hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background transition-all duration-300 hover:scale-110 active:scale-95 hover:bg-primary"
+        aria-label="BEPUL konsultatsiya"
+        className="group fixed bottom-6 right-6 z-[9999] inline-flex h-12 items-center justify-center rounded-full bg-primary/95 px-4 text-xs font-semibold text-primary-foreground shadow-lg hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background transition-all duration-300 hover:scale-105 active:scale-95 hover:bg-primary sm:h-14 sm:px-5 sm:text-sm"
         style={{
           // Subtle glassmorphism effect with backdrop blur
           backdropFilter: "blur(8px) saturate(180%)",
           WebkitBackdropFilter: "blur(8px) saturate(180%)",
         }}
       >
-        <MessageCircle
-          className="w-6 h-6 sm:w-7 sm:h-7 transition-transform duration-300 group-hover:rotate-12 group-active:rotate-0"
-          aria-hidden="true"
-        />
+        BEPUL konsultatsiya
       </button>
 
       {/* Fallback modal dialog */}

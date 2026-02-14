@@ -177,13 +177,15 @@ export function CoursesSection() {
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
             <span className="text-primary bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent ">
               {" "}
-              Farzandingizning fikrlashini o'zgartiradigan ta'lim
+              Biz shunchaki IT o’qitmaymiz.
             </span>
           </h2>
           <p className="mt-4 text-base md:text-lg text-muted-foreground">
-            Bizdagi ta'lim shunchaki texnologiyalar ro'yxati emas. Balki -
-            mantiqiy fikrlash, ijodkorlik qobilyati va sun'iy intelekt bilan
-            sog'lom munosabatni shakllantiradigan ta'limdir.
+            Ko’p o’quv markazlar dasturlash tillarini o’rgatadi xolos. <br />{" "}
+            Biz bolani bosqichma-bosqich kuzatib, yordam berib boramiz: <br />{" "}
+            <br /> - dasturchi kabi fikrlash <br /> - sun’iy intellektni
+            tushunish, unda to’g’ri ishlash <br /> - o’z kelajagini tasavvur
+            qilish
           </p>
         </div>
 
