@@ -239,7 +239,7 @@ export function FAQSection() {
             href="#contact"
             className="inline-block px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
-            BEPUL kansultatsiya
+            BEPUL darsga yoziling!
           </a>
         </div>
       </Container>

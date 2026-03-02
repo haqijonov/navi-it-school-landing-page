@@ -56,7 +56,7 @@ export function FloatingContactButton() {
       <button
         onClick={handleClick}
         onKeyDown={handleKeyDown}
-        aria-label="BEPUL konsultatsiya"
+        aria-label="BEPUL darsga yoziling!"
         className="group fixed bottom-6 right-6 z-[9999] inline-flex h-12 items-center justify-center rounded-full bg-primary/95 px-4 text-xs font-semibold text-primary-foreground shadow-lg hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background transition-all duration-300 hover:scale-105 active:scale-95 hover:bg-primary sm:h-14 sm:px-5 sm:text-sm"
         style={{
           // Subtle glassmorphism effect with backdrop blur
@@ -64,7 +64,7 @@ export function FloatingContactButton() {
           WebkitBackdropFilter: "blur(8px) saturate(180%)",
         }}
       >
-        BEPUL konsultatsiya
+        BEPUL darsga yoziling!
       </button>
 
       {/* Fallback modal dialog */}
@@ -72,7 +72,7 @@ export function FloatingContactButton() {
         <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-2xl md:text-3xl">
-              BEPUL konsultatsiya
+              BEPUL darsga yoziling!
             </DialogTitle>
             <DialogDescription>
               Telefon raqamingizni qoldiring — biz siz bilan tez orada

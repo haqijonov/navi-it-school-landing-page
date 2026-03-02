@@ -130,7 +130,7 @@ export function HeroSection() {
                 aria-label="Contact bo'limiga o'tish"
                 className="w-full h-auto px-8 py-4 text-base font-bold bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_16px_35px_rgba(0,67,255,0.28)] hover:scale-[1.02] transition-all duration-300 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                BEPUL konsultatsiya
+                BEPUL darsga yoziling!
               </Button>
             </div>
           </div>
